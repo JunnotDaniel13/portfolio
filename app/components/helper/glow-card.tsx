@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 
 const GlowCard = ({ children , identifier}) => {
   useEffect(() => {
-    const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
-    const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
+    const CONTAINER: HTMLElement | null = document.querySelector(`.glow-container-${identifier}`);
+    const CARDS: NodeListOf<Element> = document.querySelectorAll(`.glow-card-${identifier}`);
 
     const CONFIG = {
       proximity: 40,
@@ -15,7 +15,7 @@ const GlowCard = ({ children , identifier}) => {
       opacity: 0,
     };
 
-    const UPDATE = (event) => {
+    const UPDATE = (event?: PointerEvent) => {
       for (const CARD of CARDS) {
         const CARD_BOUNDS = CARD.getBoundingClientRect();
 
@@ -25,9 +25,9 @@ const GlowCard = ({ children , identifier}) => {
           event?.y > CARD_BOUNDS.top - CONFIG.proximity &&
           event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity
         ) {
-          CARD.style.setProperty('--active', 1);
+          (CARD as HTMLElement).style.setProperty('--active', '1');
         } else {
-          CARD.style.setProperty('--active', CONFIG.opacity);
+          (CARD as HTMLElement).style.setProperty('--active', CONFIG.opacity.toString());
         }
 
         const CARD_CENTER = [
@@ -42,16 +42,16 @@ const GlowCard = ({ children , identifier}) => {
 
         ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
 
-        CARD.style.setProperty('--start', ANGLE + 90);
+        (CARD as HTMLElement).style.setProperty('--start', (ANGLE + 90).toString());
       }
     };
 
     document.body.addEventListener('pointermove', UPDATE);
 
     const RESTYLE = () => {
-      CONTAINER.style.setProperty('--gap', CONFIG.gap);
-      CONTAINER.style.setProperty('--blur', CONFIG.blur);
-      CONTAINER.style.setProperty('--spread', CONFIG.spread);
+      CONTAINER.style.setProperty('--gap', CONFIG.gap.toString());
+      CONTAINER.style.setProperty('--blur', CONFIG.blur.toString());
+      CONTAINER.style.setProperty('--spread', CONFIG.spread.toString());
       CONTAINER.style.setProperty(
         '--direction',
         CONFIG.vertical ? 'column' : 'row'

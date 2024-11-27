@@ -22,18 +22,18 @@ body {
 }
 
 #sticky-card-2 {
-  --index: 2;
+  --index: 1.5;
 }
 
 #sticky-card-3 {
-  --index: 3;
+  --index: 2;
 }
 
 #sticky-card-4 {
-  --index: 4;
+  --index: 2.5;
 }
 
 .sticky-card {
   // padding-top: calc(var(--index) * 2.5rem);
-  top: calc(var(--index) * 4rem);
+  top: calc(var(--index) * 8rem);
 }
