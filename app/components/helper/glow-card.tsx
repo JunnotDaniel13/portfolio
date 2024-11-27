@@ -1,4 +1,7 @@
 "use client";
+
+import "@/app/css/card.css";
+
 import { useEffect } from "react";
 
 const GlowCard = ({
