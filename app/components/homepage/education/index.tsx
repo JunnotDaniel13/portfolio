@@ -2,11 +2,7 @@
 import Image from "next/image";
 
 import { BsPersonWorkspace } from "react-icons/bs";
-import dynamic from "next/dynamic";
-
-const AnimationLottie = dynamic(() => import("../../helper/animation-lottie"), {
-  ssr: false, // Disable server-side rendering for the Lottie animation
-});
+import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
 import lottieFile from "@/public/lottie/study.json";
 import { educations } from "@/utils/data/educations";
