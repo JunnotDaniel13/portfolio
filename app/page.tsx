@@ -9,13 +9,13 @@ import Skills from "./components/homepage/skills";
 export default async function Home() {
   return (
     <>
-      <HeroSection />
+      {/* <HeroSection />
       <AboutSection />
       <Experience />
       <Skills />
       <Projects />
       <Education />
-      <ContactSection />
+      <ContactSection /> */}
     </>
   )
 };
