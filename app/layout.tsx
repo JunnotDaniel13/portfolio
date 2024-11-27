@@ -1,4 +1,3 @@
-import { GoogleTagManager } from "@next/third-parties/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
@@ -6,14 +5,11 @@ import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
 
-const ScrollToTop = dynamic(() => import('./components/helper/scroll-to-top'));
-
-
 
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { personalData } from "@/utils/data/personal-data";
-import dynamic from "next/dynamic";
+import ScrollToTop from "./components/helper/scroll-to-top";
 
 export const metadata = {
   title: `Portfolio of ${personalData.name} - Software Developer`,
@@ -33,7 +29,6 @@ export default function RootLayout({ children }) {
         </main>
         <Footer />
       </body>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>
   );
 }

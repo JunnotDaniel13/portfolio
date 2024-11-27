@@ -15,7 +15,7 @@ const GlowCard = ({ children , identifier}) => {
       opacity: 0,
     };
 
-    const UPDATE = (event?: PointerEvent) => {
+    const UPDATE = (event: PointerEvent) => {
       for (const CARD of CARDS) {
         const CARD_BOUNDS = CARD.getBoundingClientRect();
 
@@ -59,7 +59,7 @@ const GlowCard = ({ children , identifier}) => {
     };
 
     RESTYLE();
-    UPDATE();
+    // UPDATE();
 
     // Cleanup event listener
     return () => {
