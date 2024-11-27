@@ -1,19 +1,32 @@
 "use client";
+import Script from "next/script";
+import React, { useRef, useEffect } from "react";
 
-import Lottie from "lottie-react";
+const AnimationLottie = ({ animationPath }: { animationPath: unknown }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-const AnimationLottie = ({ animationPath, width }: { animationPath: any, width?: number }) => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationPath,
-    style: {
-      width: '95%',
+  useEffect(() => {
+    if (typeof window !== "undefined" && containerRef.current) {
+      import("lottie-web").then((lottie) => {
+        lottie.default.loadAnimation({
+          container: containerRef.current as HTMLDivElement,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: animationPath,
+        });
+      });
     }
-  };
+  }, [animationPath]);
 
   return (
-    <Lottie {...defaultOptions} />
+    <>
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"
+        strategy="lazyOnload"
+      />
+      <div ref={containerRef} />
+    </>
   );
 };
 

@@ -3,7 +3,8 @@ export const educations = [
     id: 1,
     title: "Bachelor Degree",
     duration: "2019 - 2022",
-    institution: "Institut Supérieur de l’informatique et du Management d’Entreprise",
+    institution:
+      "Institut Supérieur de l’informatique et du Management d’Entreprise",
   },
   {
     id: 2,
@@ -16,5 +17,5 @@ export const educations = [
     title: "Arduino programming training",
     duration: "2018",
     institution: "Lycée Technique Professionnel Alarobia",
-  }
-]
+  },
+];

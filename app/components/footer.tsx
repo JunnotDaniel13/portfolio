@@ -1,6 +1,5 @@
-
-import { personalData } from '@/utils/data/personal-data';
-import Link from 'next/link';
+import { personalData } from "@/utils/data/personal-data";
+import Link from "next/link";
 import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
 
@@ -13,7 +12,14 @@ function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/junnot-daniel/" className="text-[#16f2b3]">{personalData.name}</Link>
+            © Developer Portfolio by{" "}
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/junnot-daniel/"
+              className="text-[#16f2b3]"
+            >
+              {personalData.name}
+            </Link>
           </p>
           <div className="flex items-center gap-5">
             <Link
@@ -35,8 +41,8 @@ function Footer() {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
-};
+}
 
 export default Footer;

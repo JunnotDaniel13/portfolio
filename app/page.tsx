@@ -12,10 +12,10 @@ export default async function Home() {
       <HeroSection />
       <AboutSection />
       <Experience />
-      {/* <Skills />
+      <Skills />
       <Projects />
       <Education />
-      <ContactSection /> */}
+      <ContactSection />
     </>
-  )
-};
+  );
+}
