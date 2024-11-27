@@ -18,15 +18,15 @@ body {
 }
 
 #sticky-card-1 {
-  --index: 1;
+  --index: 1.15;
 }
 
 #sticky-card-2 {
-  --index: 1.5;
+  --index: 1.7;
 }
 
 #sticky-card-3 {
-  --index: 2;
+  --index: 2.25;
 }
 
 #sticky-card-4 {
