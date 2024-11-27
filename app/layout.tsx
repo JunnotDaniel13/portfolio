@@ -5,10 +5,15 @@ import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
-import ScrollToTop from "./components/helper/scroll-to-top";
+
+const ScrollToTop = dynamic(() => import('./components/helper/scroll-to-top'));
+
+
+
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { personalData } from "@/utils/data/personal-data";
+import dynamic from "next/dynamic";
 
 export const metadata = {
   title: `Portfolio of ${personalData.name} - Software Developer`,
