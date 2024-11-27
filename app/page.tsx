@@ -9,8 +9,8 @@ import Skills from "./components/homepage/skills";
 export default async function Home() {
   return (
     <>
-      {/* <HeroSection />
-      <AboutSection />
+      <HeroSection />
+      {/* <AboutSection />
       <Experience />
       <Skills />
       <Projects />
