@@ -1,0 +1,20 @@
+{
+  "LocaleSwitcher": {
+    "fr": "French",
+    "en": "English",
+    "label": "Language"
+  },
+  "navigation": {
+    "about": "ABOUT",
+    "experience": "EXPERIENCE",
+    "skills": "SKILLS",
+    "education": "EDUCATION",
+    "projects": "PROJECTS"
+  },
+  "HeroSection": {
+    "greeting": "Hello,",
+    "introductionStart": "This is",
+    "introductionMiddle": "I'm a",
+    "introductionEnd": "."
+  }
+}
