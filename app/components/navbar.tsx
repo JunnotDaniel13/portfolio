@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { personalData } from "@/utils/data/personal-data";
+import LocaleSwitcher from "./helper/locale-switcher";
+import { useTranslations } from "next-intl";
 
 function Navbar() {
+  const t = useTranslations("navigation");
   return (
     <nav className="fixed top-0 w-full h-28 z-[99] bg-transparent bg-[radial-gradient(transparent_1px,rgb(13,18,36)_1px)] bg-[length:4px_4px] backdrop-blur-[3px] opacity-100 [mask:linear-gradient(rgb(0,0,0)_60%,rgba(0,0,0,0)_100%)]">
       <div className="flex items-center justify-between py-5 mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
@@ -24,7 +27,7 @@ function Navbar() {
               href="/#about"
             >
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-                ABOUT
+                {t("about")}
               </div>
             </Link>
           </li>
@@ -34,7 +37,7 @@ function Navbar() {
               href="/#experience"
             >
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-                EXPERIENCE
+                {t("experience")}
               </div>
             </Link>
           </li>
@@ -44,7 +47,7 @@ function Navbar() {
               href="/#skills"
             >
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-                SKILLS
+                {t("skills")}
               </div>
             </Link>
           </li>
@@ -54,7 +57,7 @@ function Navbar() {
               href="/#education"
             >
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-                EDUCATION
+                {t("education")}
               </div>
             </Link>
           </li>
@@ -65,9 +68,12 @@ function Navbar() {
               href="/#projects"
             >
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-                PROJECTS
+                {t("projects")}
               </div>
             </Link>
+          </li>
+          <li>
+            <LocaleSwitcher />
           </li>
         </ul>
       </div>
