@@ -6,6 +6,8 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import { Check } from "lucide-react";
 import { useState, useTransition } from "react";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+import getCountryIsoCode from "@/utils/get-country-iso-code";
 
 type Props = {
   defaultValue: string;
@@ -19,14 +21,17 @@ export default function LocaleSwitcherSelect({
   label,
 }: Props) {
   const [isPending, startTransition] = useTransition();
-  const countries: Record<string, string> = { fr: "🇫🇷", en: "🇬🇧" };
   const [value, setValue] = useState(defaultValue);
+  const [countryIsoCode, setCountryIsoCode] = useState(
+    getCountryIsoCode(defaultValue)
+  );
 
   function onChange(value: string) {
     const locale = value as Locale;
     startTransition(() => {
       setUserLocale(locale);
       setValue(value);
+      setCountryIsoCode(() => getCountryIsoCode(value));
     });
   }
 
@@ -41,9 +46,8 @@ export default function LocaleSwitcherSelect({
           )}
         >
           <Select.Icon>
-            {/* <Languages className="h-6 w-6 text-slate-600 transition-colors group-hover:text-slate-900" /> */}
             <Select.Value aria-label={defaultValue}>
-              {countries[defaultValue]}
+              <span className={`fi fi-${countryIsoCode}`}></span>
             </Select.Value>
           </Select.Icon>
         </Select.Trigger>
