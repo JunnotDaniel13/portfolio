@@ -1,6 +1,6 @@
 "use client";
 import Script from "next/script";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, memo } from "react";
 
 const AnimationLottie = ({ animationPath }: { animationPath: unknown }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ const AnimationLottie = ({ animationPath }: { animationPath: unknown }) => {
         });
       });
     }
-  }, [animationPath]);
+  }, []);
 
   return (
     <>
