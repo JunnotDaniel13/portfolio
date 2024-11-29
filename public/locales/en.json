@@ -15,6 +15,14 @@
     "greeting": "Hello,",
     "introductionStart": "This is",
     "introductionMiddle": "I'm a",
-    "introductionEnd": "."
+    "introductionEnd": ".",
+    "contactMe": "Contact me",
+    "getResume": "Get Resume"
+  },
+  "aboutSection": {
+    "title": "ABOUT ME",
+    "subtitle": "Who I am?",
+    "description": "My name is Junnot Daniel, and I’m a passionate and dedicated programmer. I thrive on learning and exploring new technologies, with a strong self-driven attitude toward growth. Problem-solving excites me, and I’m deeply committed to making the web more accessible and open to everyone. My expertise lies in JavaScript, which I use extensively across various aspects of web application development—a field I truly enjoy. I am open to job opportunities that align with my skills and interests, and I look forward to contributing to meaningful projects.",
+    "imageAlt": "Junnot Daniel"
   }
 }

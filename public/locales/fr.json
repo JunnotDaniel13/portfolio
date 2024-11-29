@@ -15,6 +15,14 @@
     "greeting": "Bonjour,",
     "introductionStart": "Je suis",
     "introductionMiddle": "un",
-    "introductionEnd": "professionnel."
+    "introductionEnd": "professionnel.",
+    "contactMe": "Contactez-moi",
+    "getResume": "Obtenir le CV"
+  },
+  "aboutSection": {
+    "title": "À PROPOS DE MOI",
+    "subtitle": "Qui suis-je ?",
+    "description": "Je m'appelle Junnot Daniel et je suis un programmeur passionné et dévoué. J'aime apprendre et explorer de nouvelles technologies, avec une forte volonté d'auto-amélioration. Résoudre des problèmes m'enthousiasme et je suis profondément engagé à rendre le web plus accessible et ouvert à tous. Mon expertise réside dans JavaScript, que j'utilise largement dans divers aspects du développement d'applications web, un domaine que j'apprécie vraiment. Je suis ouvert à des opportunités professionnelles qui correspondent à mes compétences et mes intérêts, et j'ai hâte de contribuer à des projets significatifs.",
+    "imageAlt": "Junnot Daniel"
   }
 }
