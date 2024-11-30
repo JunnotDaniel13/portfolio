@@ -8,11 +8,11 @@ function AboutSection() {
   const t = useTranslations("aboutSection");
   return (
     <div id="about" className="my-12 lg:my-16 relative">
-      <div className="hidden lg:flex flex-col items-center w-fit absolute top-20 -right-[82px]">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
+      <div className="hidden lg:flex items-center origin-right rotate-90 w-fit absolute right-5 bottom-0">
+        <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
           {t("title")}
         </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
+        <span className="h-[2px] w-36 bg-[#1a1443]"></span>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div className="order-2 lg:order-1">
