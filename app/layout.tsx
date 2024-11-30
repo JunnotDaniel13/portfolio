@@ -41,7 +41,7 @@ export default async function RootLayout({
       >
         <ToastContainer />
         <Navbar />
-        <main className="min-h-screen relative mt-14 mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
+        <main className="min-h-screen relative mt-[80px] lg:mt-14 mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>
