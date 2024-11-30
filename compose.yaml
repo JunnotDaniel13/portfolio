@@ -1,0 +1,8 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio
+    ports:
+      - "3001:3000"
