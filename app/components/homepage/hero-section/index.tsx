@@ -17,11 +17,11 @@ function HeroSection() {
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
         src="/hero.svg"
-        priority={false}
+        priority
         alt="Hero"
         width={1572}
         height={795}
-        className="absolute -top-[98px] -z-10"
+        className="absolute -top-[98px] -z-10 w-auto h-auto "
       />
 
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">

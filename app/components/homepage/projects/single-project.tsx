@@ -189,10 +189,10 @@ const SingleProject = ({
           <Image
             src={image ? image?.src : placeholder}
             alt={name}
-            priority={false}
+            priority
             width={1080}
             height={720}
-            className="w-80 h-64 transition-opacity duration-[0.7s] delay-[0.3s] rounded-lg group-hover:opacity-0"
+            className="w-auto h-auto transition-opacity duration-[0.7s] delay-[0.3s] rounded-lg group-hover:opacity-0"
           />
         </div>
         <div className="flex items-center justify-between w-full">

@@ -15,11 +15,11 @@ function Experience() {
     >
       <Image
         src="/section.svg"
-        priority={false}
+        priority
         alt="Hero"
         width={1572}
         height={795}
-        className="absolute top-0 -z-10"
+        className="absolute top-0 -z-10 w-auto h-auto "
       />
 
       <div className="flex justify-center my-5 lg:py-8">
@@ -50,11 +50,11 @@ function Experience() {
                   <div className="p-3 relative">
                     <Image
                       src="/blur-23.svg"
-                      priority={false}
+                      priority
                       alt="Hero"
                       width={1080}
                       height={200}
-                      className="absolute bottom-0 opacity-80"
+                      className="absolute bottom-0 opacity-80 w-auto h-auto "
                     />
                     <div className="flex justify-center">
                       <p className="text-xs sm:text-sm text-[#16f2b3]">

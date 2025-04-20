@@ -55,10 +55,10 @@ function Skills() {
                     <Image
                       src={skillsImage(skill)?.src}
                       alt={skill}
-                      priority={false}
+                      priority
                       width={40}
                       height={40}
-                      className="h-full w-auto rounded-lg"
+                      className="h-full w-auto aspect-square rounded-lg"
                     />
                   </div>
                   <p className="text-white text-sm sm:text-lg">{skill}</p>
