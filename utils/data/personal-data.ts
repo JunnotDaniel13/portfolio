@@ -14,7 +14,7 @@ export const personalData = {
   facebook: "https://www.facebook.com/junnot.daniel/",
   linkedIn: "https://www.linkedin.com/in/junnot-daniel/",
   twitter: "https://twitter.com/junnotdaniel",
-  stackOverflow: "https://stackoverflow.com/users/16840768/abu-said",
+  // stackOverflow: "https://stackoverflow.com/users/16840768/abu-said",
   // leetcode: "https://leetcode.com/said3812/",
   devUsername: "JunnotDaniel13",
   resume: "https://junnotdaniel13.github.io/resume/",
