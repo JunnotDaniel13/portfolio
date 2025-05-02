@@ -10,10 +10,6 @@ export const categorizedSkills: StandardizedCategorizedSkills = {
     { label: "TailwindCSS", icon: "TailwindCSS" },
     { label: "Bootstrap", icon: "Bootstrap" },
   ],
-  "Build Tools": [
-    { label: "Vite", icon: "Vite" },
-    { label: "Dotenv", icon: "Dotenv" },
-  ],
   "Backend Development": [
     { label: "Nodejs", icon: "Nodejs" },
     { label: "Expressjs", icon: "ExpressjsDark" },
