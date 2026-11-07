@@ -63,6 +63,7 @@ html:not(.js) .js-only{display:none!important}
 .status{margin:0 0 1rem}
 h1{font:800 clamp(1.875rem,5vw + .5rem,3.5rem)/1.05 var(--sans);letter-spacing:-.03em;margin:0 0 1.25rem;text-wrap:balance;max-width:26ch}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
+.btn.copied,.btn.copied:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent);animation:copy-pop .35s ease-out}@keyframes copy-pop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}@media (prefers-reduced-motion:reduce){.btn.copied{animation:none}}
 .email{display:block;font:500 1rem var(--mono);margin:0 0 1rem;overflow-wrap:anywhere}
 .lede{color:var(--muted);font-size:1.15rem;max-width:60ch;margin:0}
 section{padding-top:2rem;border-top:1px solid var(--rule);margin-top:2.25rem}

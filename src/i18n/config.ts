@@ -12,9 +12,18 @@ export function localePath(locale: Locale) {
   return locale === 'fr' ? '/fr' : '/'
 }
 
+// Career start: May 2023. Completed years of experience, recomputed on every load so it ticks up each May.
+const CAREER_START = { year: 2023, month: 4 } // month is 0-based (May)
+
+export function yearsOfExperience(now = new Date()) {
+  const years = now.getFullYear() - CAREER_START.year - (now.getMonth() < CAREER_START.month ? 1 : 0)
+  return Math.max(years, 1)
+}
+
 export async function loadMessages(locale: Locale): Promise<Messages> {
-  if (locale === 'fr') return (await import('~/locales/fr')).messages
-  return (await import('~/locales/en')).messages
+  const { messages } = locale === 'fr' ? await import('~/locales/fr') : await import('~/locales/en')
+  const years = String(yearsOfExperience())
+  return { ...messages, about: { ...messages.about, first: messages.about.first.replace('{years}', years) } }
 }
 
 type LeafKeys<T, Prefix extends string = ''> = {

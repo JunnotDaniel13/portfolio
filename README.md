@@ -27,9 +27,85 @@ npm test             # Vitest unit/data/security tests
 npm run test:e2e     # Playwright + axe browser gates (Chromium)
 npm run lint         # TypeScript check
 npm run check:size   # bundle/asset size report and gates
+npm run build:resume # build the resume
 ```
 
 For a locally cached Chromium, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable. Otherwise run `npx playwright install chromium` first.
+
+## CV / Résumé PDF
+
+The CV is maintained in LaTeX, one source per language:
+
+| Language | Source | Published file (served from `public/`) |
+| --- | --- | --- |
+| English | `cv/cv.tex` | `public/Junnot-Daniel-Resume.pdf` → `/Junnot-Daniel-Resume.pdf` |
+| French | `cv/cv-fr.tex` | `public/Junnot-Daniel-CV.pdf` → `/Junnot-Daniel-CV.pdf` |
+
+The Résumé / CV button in the hero links to the PDF that matches the current page language (`personal.resume` in `src/data/portfolio.ts`).
+
+Build and publish both PDFs from the project root:
+
+```bash
+npm run build:resume
+```
+
+`build:resume` runs `scripts/build-resume.mjs`, which:
+
+1. compiles each `.tex` file with **pdfLaTeX** (two passes, so bookmarks and references settle);
+2. copies the English PDF to `public/Junnot-Daniel-Resume.pdf` and the French PDF to `public/Junnot-Daniel-CV.pdf`;
+3. deletes the intermediate PDFs from `cv/`. The LaTeX byproducts (`.aux`, `.log`, `.out`) stay there for debugging.
+
+Commit the two files in `public/` after rebuilding.
+
+### LaTeX dependencies
+
+The CV uses the Source Sans LaTeX package and Source Sans 3 Type 1 fonts. These may need to be installed separately from the base TeX Live packages.
+
+On Ubuntu / WSL, install the base LaTeX packages:
+
+```bash
+sudo apt update
+sudo apt install texlive-latex-base texlive-latex-recommended
+```
+
+Verify that the Source Sans package and font files are discoverable:
+
+```bash
+kpsewhich sourcesans.sty
+kpsewhich SourceSans3-Bold.pfb
+```
+
+Both commands should print a file path. If either returns no path, install the missing Source Sans package or font files and refresh the TeX filename database:
+
+```bash
+mktexlsr ~/texmf
+```
+
+If you install or change a local pdfTeX font map, refresh the user font maps:
+
+```bash
+updmap-user --force
+```
+
+### Important: use pdfLaTeX, not Tectonic
+
+The Source Sans package and Type 1 fonts in this setup are installed in the local TeX Live tree (`~/texmf`). Tectonic does not automatically use that local TeX Live configuration.
+
+`scripts/build-resume.mjs` calls `pdflatex` directly; do not switch it to `tectonic`.
+
+### Check the generated PDFs
+
+After building, confirm that both files exist:
+
+```bash
+ls -lh public/Junnot-Daniel-Resume.pdf public/Junnot-Daniel-CV.pdf
+```
+
+If compilation fails, the script exits with an error without showing LaTeX output. Inspect the logs:
+
+```bash
+tail -n 30 cv/cv.log cv/cv-fr.log
+```
 
 ## Environment
 
@@ -64,4 +140,4 @@ The base pages currently use SSR with `Cache-Control: public, max-age=0, must-re
 
 ## Accessibility and content limits
 
-The UI includes keyboard focus handoff, non-colour active states, 44 px targets, reduced-motion/forced-colour support, native form constraints, live status regions and print styles. Automated checks do not replace the manual screen-reader checklist. Project demo/source URLs and localized hosted PDF résumés are omitted unless supplied by the owner; no placeholder links are rendered.
+The UI includes keyboard focus handoff, non-colour active states, 44 px targets, reduced-motion/forced-colour support, native form constraints, live status regions and print styles. Automated checks do not replace the manual screen-reader checklist. Project demo/source URLs are omitted unless supplied by the owner; no placeholder links are rendered.
