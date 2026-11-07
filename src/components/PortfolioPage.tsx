@@ -27,7 +27,7 @@ export function PortfolioPage({ locale, messages, flash, status }: {
       <a className="skip" href="#main">{messages.nav.skip}</a>
       <SiteHeader locale={locale} />
       <main className="main" id="main" tabIndex={-1}>
-        <Hero />
+        <Hero locale={locale} />
         <WorkSection />
         <ExperienceSection />
         <AboutSection />

@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query'
-import { useForm } from '@tanstack/react-form'
+import { useForm, useStore } from '@tanstack/react-form'
 import { useServerFn } from '@tanstack/react-start'
 import { contactSchema, type ContactErrors, type ContactField, type ContactValues } from '~/server/contact-schema'
 import { sendContact } from '~/server/contact.functions'
@@ -70,16 +70,19 @@ function ContactForm({ locale, initialValues, serverErrors, initialStatus, hasFl
           return
         }
         setSuccess(true)
-        formApi.reset()
-        formApi.setFieldValue('name', '')
-        formApi.setFieldValue('email', '')
-        formApi.setFieldValue('message', '')
-        formApi.setFieldValue('website', '')
+        // reset() with explicit empty values restores pristine/untouched state; setFieldValue would mark
+        // each field touched and run the validator, showing an error under every input.
+        formApi.reset({ name: '', email: '', message: '', website: '', locale })
+        setCleared({ name: true, email: true, message: true })
       } catch {
         setErrorText(t('contact.failed'))
       }
     },
   })
+
+  // form-level validation marks every field "touched"; only reveal errors on fields the user left/edited, or after a submit attempt.
+  const submitAttempts = useStore(form.store, (state) => state.submissionAttempts)
+  const shouldShow = (meta: { isBlurred: boolean; isDirty: boolean }) => submitAttempts > 0 || meta.isBlurred || meta.isDirty
 
   useLayoutEffect(() => {
     const captured = contactCapture()
@@ -168,7 +171,7 @@ function ContactForm({ locale, initialValues, serverErrors, initialStatus, hasFl
       </div>
 
       <form.Field name="name">{(field) => {
-        const error = fieldError('name', field.state.value, field.state.meta.isTouched, field.state.meta.errors.length > 0)
+        const error = fieldError('name', field.state.value, shouldShow(field.state.meta), field.state.meta.errors.length > 0)
         return <div>
           <label htmlFor="contact-name">{t('contact.name')}</label>
           <p className="hint" id="name-hint">{t('contact.nameHint')}</p>
@@ -178,7 +181,7 @@ function ContactForm({ locale, initialValues, serverErrors, initialStatus, hasFl
       }}</form.Field>
 
       <form.Field name="email">{(field) => {
-        const error = fieldError('email', field.state.value, field.state.meta.isTouched, field.state.meta.errors.length > 0)
+        const error = fieldError('email', field.state.value, shouldShow(field.state.meta), field.state.meta.errors.length > 0)
         return <div>
           <label htmlFor="contact-email">{t('contact.emailField')}</label>
           <p className="hint" id="email-hint">{t('contact.emailHint')}</p>
@@ -188,7 +191,7 @@ function ContactForm({ locale, initialValues, serverErrors, initialStatus, hasFl
       }}</form.Field>
 
       <form.Field name="message">{(field) => {
-        const error = fieldError('message', field.state.value, field.state.meta.isTouched, field.state.meta.errors.length > 0)
+        const error = fieldError('message', field.state.value, shouldShow(field.state.meta), field.state.meta.errors.length > 0)
         const remaining = 500 - field.state.value.length
         return <div>
           <label htmlFor="contact-message">{t('contact.message')}</label>

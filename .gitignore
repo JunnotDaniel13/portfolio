@@ -45,3 +45,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 *.omc/
+cv*.aux
+cv*.log
+cv*.out

@@ -1,90 +1,160 @@
-% ATS-friendly CV: single column, standard section names, selectable text, no icons/tables/graphics.
-% Compile with:  pdflatex cv.tex   (or: tectonic cv.tex)
+% Presentable + VMock/ATS-Friendly 1-Page CV (Full-Page Balanced Layout)
+% Compile with: pdflatex cv.tex (or: tectonic cv.tex)
 \documentclass[10pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[margin=1.5cm,top=1.2cm,bottom=1.1cm]{geometry}
-\usepackage[hidelinks]{hyperref}
+\usepackage[default]{sourcesans} % fallback: \usepackage{lmodern}
+\usepackage[left=1.35cm,right=1.35cm,top=1.25cm,bottom=1.25cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[english]{babel}
 
-% Make every glyph map to real Unicode text so ATS parsers extract it cleanly.
-\ifdefined\pdfgentounicode % pdfTeX only; XeTeX/LuaTeX already embed Unicode mappings
+\ifdefined\pdfgentounicode
   \input{glyphtounicode}
   \pdfgentounicode=1
 \fi
 
+% ---------- Colours ----------
+\definecolor{accent}{HTML}{1F3A5F} % navy
+\definecolor{muted}{HTML}{555555}  % grey
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\raggedright
+\linespread{1.05}
 
-\titleformat{\section}{\bfseries\large\uppercase}{}{0pt}{}[\vspace{-0.6em}\rule{\linewidth}{0.4pt}]
-\titlespacing*{\section}{0pt}{0.65em}{0.4em}
-\setlist[itemize]{leftmargin=1.1em,itemsep=0pt,topsep=1pt,parsep=0pt}
+% ---------- Section style ----------
+\titleformat{\section}
+  {\color{accent}\large\bfseries}{}{0pt}{\MakeUppercase}
+  [\vspace{-0.5em}{\color{accent}\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{0.4em}{0.45em}
 
-% \line{Bold part}{Right-aligned}{Rest of the line}
-\newcommand{\project}[3]{\textbf{#1}, #2 \hfill #3\par\vspace{1pt}}
-\newcommand{\school}[3]{\textbf{#1}, #2 \hfill #3\par\vspace{1pt}}
-% \entry{Title}{Dates}{Organisation}{Place}
+\setlist[itemize]{leftmargin=1.25em,itemsep=2.5pt,topsep=3pt,parsep=0pt,
+  label={\color{accent}\textbullet}}
+
+% \entry{Organisation}{Dates}{Role / Stack}{Location / Links}
 \newcommand{\entry}[4]{%
-  \textbf{#1} \hfill #2\\
-  #3 \hfill #4\par\vspace{1pt}}
+  {\bfseries #1} \hfill {\color{muted}#2}\\
+  {\color{accent}\itshape #3} \hfill {\color{muted}\small #4}\par
+  \vspace{1pt}}
+
+\newcommand{\sep}{\hspace{4pt}{\color{muted}|}\hspace{4pt}}
 
 \begin{document}
 
-{\LARGE\bfseries Jerenason Junnot Daniel}\\[2pt]
-Antananarivo, Madagascar \textbar{} +261 34 07 677 91 \textbar{} jerenasonjunnot@gmail.com\\
-https://www.linkedin.com/in/junnot-daniel \textbar{} https://github.com/junnot-daniel
+% ---------- Header ----------
+\vspace*{-6pt}
+\begin{center}
+  {\fontsize{22}{26}\selectfont\bfseries\color{accent}
+    Jerenason Junnot Daniel}\\[3pt]
+  {\large\bfseries\color{muted} Full-Stack Web Developer}\\[4pt]
+  {\small
+    Antananarivo, Madagascar\sep
+    +261 34 07 677 91\sep
+    \href{mailto:jerenasonjunnot@gmail.com}{jerenasonjunnot@gmail.com}\\[2pt]
+    \href{https://junnotdaniel.vercel.app}{junnotdaniel.vercel.app}\sep
+    \href{https://www.linkedin.com/in/junnot-daniel}{linkedin.com/in/junnot-daniel}\sep
+    \href{https://github.com/junnotdaniel13}{github.com/junnotdaniel13}}
+\end{center}
+\vspace{-6pt}
 
-\section*{Professional Summary}
-Results-driven Full-Stack Web Developer with 2+ years of experience designing, deploying, and maintaining scalable web applications across renewable energy and SaaS domains. Proficient in TypeScript, React, Next.js, Node.js, and FastAPI. Demonstrated track record of delivering end-to-end features including dynamic simulation engines, automated notification services, and administrative portals. Currently advancing software design principles through BYU-Pathway Worldwide.
+\vfill
 
-\section*{Technical Skills}
-\begin{itemize}
-  \item \textbf{Languages:} TypeScript, JavaScript (ES6+), PHP, Python, HTML5, CSS3, SQL
-  \item \textbf{Frontend:} React, Next.js, Angular, Tailwind CSS, Responsive Design, RESTful APIs
-  \item \textbf{Backend:} Node.js, Express, FastAPI, Hono.js, Laravel, Microservices Architecture
-  \item \textbf{Databases:} PostgreSQL, MySQL, MongoDB
-  \item \textbf{Tools \& DevOps:} Git, GitHub, Docker, Postman, Linux/Vim, Nginx, Figma, Agile/Scrum
-\end{itemize}
+% ---------- Summary ----------
+% \section*{Summary}
+% Full-Stack Web Developer with 3+ years of experience building and shipping
+% production web applications using TypeScript, React, Next.js, Node.js, and
+% FastAPI. Engineered and maintained 6+ customer-facing platforms for an
+% international renewable energy company, including financial simulation
+% engines, B2B administrative portals, automated PDF reporting, and
+% notification services. Experienced in owning features end to end from
+% database design to cloud deployment in remote, cross-functional teams.
 
-\section*{Professional Experience}
-\entry{Solar Transit Africa Ltd}{May 2023 -- Present}{Full-Stack Web Developer}{}
-\begin{itemize}
-  \item Spearheaded full-stack leasing platforms for solar-rent.mu and solar-rent.pro, creating 20-year energy indexation simulators and commercial ROI calculators that reduced quote turnaround time by 35\%.
-  \item Engineered B2B administrative portals on solar-rent.pro to manage multi-scenario enterprise simulations, equipment inventory, and long-term lease contract lifecycles.
-  \item Implemented token-based authentication and automated dynamic PDF report generation for pvgis.com, enabling 100+ global solar installers to export technical feasibility reports.
-  \item Pioneered a centralized B2B supplier management interface and built an asynchronous notification service for solardropshipping.com, accelerating supplier onboarding by 20\%.
-  \item Streamlined site-visit tracking for solarcenter.mu by delivering an end-to-end audit scheduling web application, optimizing panel placement workflows for field engineering teams.
-  \item Optimized data synchronization across solarpool.mu and mbs457.mu by linking modular UI components with RESTful backend APIs, cutting page load latency by 15\%.
-\end{itemize}
-
-\section*{Key Projects}
-\entry{Pulse -- SaaS Analytics \& User Management Platform}{2024}{Full-Stack Developer \textbar{} Next.js, TypeScript, Supabase, Stripe, Tailwind CSS}{}
-\begin{itemize}
-  \item Architected a multi-tenant SaaS analytics platform featuring real-time revenue metric cards, 30-day interactive financial charts, and automated team invitation workflows.
-  \item Formulated secure end-to-end Stripe billing and webhook pipelines with Supabase Row-Level Security (RLS), maintaining sub-200ms state synchronization across live demo sessions.
-\end{itemize}
-
-\entry{AI-Powered Financial Mobile App API}{2024}{Backend Developer \textbar{} Hono.js, TypeScript, OpenAI API, MongoDB, Docker, VPS}{}
-\begin{itemize}
-  \item Devised a high-throughput RESTful backend API using Hono.js and TypeScript, integrating OpenAI models to automate transaction classification and personalized budget insights.
-  \item Containerized application services using Docker on a self-managed Linux VPS with Nginx reverse proxy, optimizing MongoDB queries to achieve sub-150ms response times.
-\end{itemize}
-
+% ---------- Education ----------
 \section*{Education}
-\entry{BYU-Pathway Worldwide / BYU-Idaho}{Anticipated Dec 2027}{Bachelor of Science in Software Development}{}
+\entry{Brigham Young University--Idaho (BYU-Pathway Worldwide)}{Expected Dec 2027}%
+{B.S. in Software Development}{Online}
+{\small\color{muted}\textbf{Relevant Coursework:} Object-Oriented
+Programming, Software Design, Web Frontend Development, Database Design \&
+SQL.}\par
+\vspace{5pt}
+
+\entry{Higher Institute of Computer Science and Business Management (ISIME)}%
+{Oct 2019 -- Nov 2022}{Diploma in Computer Science}{Antananarivo, Madagascar}
+
+\vfill
+
+% ---------- Experience ----------
+\section*{Professional Experience}
+\entry{FINAMAD}{May 2023 -- Present}%
+{Full-Stack Web Developer}{Antananarivo, Madagascar}
 \begin{itemize}
-  \item Coursework: Object-Oriented Programming, Web Frontend Development, Software Design \& Architecture, Database Design \& SQL.
+  \item Engineered commercial solar leasing platforms featuring a 20-year
+        energy indexation simulator and ROI calculator, reducing customer
+        quote turnaround time by \textbf{35\%}.
+  \item Spearheaded the development of B2B administrative portals to manage
+        enterprise simulations, equipment inventory, and \textbf{500+} lease
+        contracts across their full lifecycle.
+  \item Architected token-based JWT authentication and automated PDF report
+        generation services adopted by \textbf{100+} international solar
+        installers to export feasibility reports.
+  \item Developed a supplier management dashboard and asynchronous
+        notification service using Node.js and FastAPI, accelerating new
+        supplier onboarding by \textbf{20\%}.
+  \item Led the end-to-end delivery of a field audit scheduling application,
+        enabling engineering teams to coordinate site inspections and
+        optimize solar panel placement.
+  \item Optimized frontend rendering and REST API calls across two
+        high-traffic web portals by refactoring reusable React components,
+        reducing page load time by \textbf{15\%}.
+\end{itemize}
+\vspace{2pt}
+{\small\color{muted}\textbf{Stack:} TypeScript, React, Next.js, Node.js, Laravel, 
+FastAPI, PostgreSQL, MySQL, Docker}
+
+\vfill
+
+% ---------- Projects ----------
+\section*{Projects}
+\entry{Pulse -- Multi-Tenant SaaS Analytics Platform}{Jan 2026 -- Apr 2026}%
+{Next.js, TypeScript, Supabase, Stripe, Tailwind CSS}%
+{\href{https://pulse-dashboard-theta-swart.vercel.app/}{Live Demo}\sep
+ \href{https://github.com/junnot-daniel}{GitHub}}
+\begin{itemize}
+  \item Designed and built a multi-tenant SaaS dashboard with real-time
+        revenue metrics, 30-day interactive charts, and role-based team
+        invitation workflows.
+  \item Integrated Stripe subscription webhooks and secured tenant data with
+        PostgreSQL Row-Level Security in Supabase, maintaining API query
+        latency under \textbf{200ms}.
+\end{itemize}
+\vspace{5pt}
+
+\entry{AI-Powered Personal Finance REST API}{May 2025 -- Aug 2025}%
+{Node.js, TypeScript, OpenAI API, MongoDB, Docker, Nginx}%
+{\href{https://github.com/junnot-daniel}{GitHub}}
+\begin{itemize}
+  \item Initiated and built a backend REST API for a mobile finance
+        application that uses OpenAI models to categorize transactions and
+        generate personalized budget insights.
+  \item Deployed containerized services with Docker on a Linux VPS behind
+        Nginx and added compound MongoDB indexes to keep response times
+        under \textbf{150ms}.
 \end{itemize}
 
-\entry{Institut Sup\'erieur de l'Informatique et du Management d'Entreprise}{2022}{Diploma in Computer Science / Software Engineering}{}
-\begin{itemize}
-  \item Coursework: Algorithms \& Data Structures, Relational Database Management (MySQL), Systems Analysis, Web Engineering.
-\end{itemize}
+\vfill
+
+% ---------- Skills ----------
+\section*{Technical Skills}
+\textbf{Languages:} TypeScript, JavaScript, Python, PHP, SQL, HTML5, CSS3\\[2.5pt]
+\textbf{Frontend:} React, Next.js, Angular, Tailwind CSS, Responsive UI Design\\[2.5pt]
+\textbf{Backend:} Node.js, Express, FastAPI, Laravel, REST APIs, JWT Authentication\\[2.5pt]
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB, Supabase (Row-Level Security)\\[2.5pt]
+\textbf{DevOps \& Integrations:} Docker, Nginx, Linux VPS, Git, GitHub, Postman, Figma, Stripe API, OpenAI API
 
 \end{document}

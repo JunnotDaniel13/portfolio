@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "lint": "tsc --noEmit",
-    "check:size": "node scripts/check-size.mjs"
+    "check:size": "node scripts/check-size.mjs",
+    "build:resume": "node scripts/build-resume.mjs"
   },
   "dependencies": {
     "@tanstack/react-form": "1.33.5",

@@ -4,7 +4,7 @@ export const personal = {
   phone: '+261 34 07 677 91',
   phoneHref: '+261340767791',
   address: 'Antananarivo, Madagascar',
-  resume: '/Junnot-Daniel-CV.pdf', // ATS-friendly PDF built from cv/cv.tex
+  resume: { en: '/Junnot-Daniel-Resume.pdf', fr: '/Junnot-Daniel-CV.pdf' }, // ATS-friendly PDFs built from cv/cv.tex and cv/cv-fr.tex
   source: 'https://github.com/JunnotDaniel13/portfolio',
   social: [
     { label: 'GitHub', href: 'https://github.com/junnot-daniel' },
