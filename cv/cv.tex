@@ -1,0 +1,160 @@
+% Presentable + VMock/ATS-Friendly 1-Page CV (Full-Page Balanced Layout)
+% Compile with: pdflatex cv.tex (or: tectonic cv.tex)
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{sourcesans} % fallback: \usepackage{lmodern}
+\usepackage[left=1.35cm,right=1.35cm,top=1.25cm,bottom=1.25cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+% ---------- Colours ----------
+\definecolor{accent}{HTML}{1F3A5F} % navy
+\definecolor{muted}{HTML}{555555}  % grey
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.05}
+
+% ---------- Section style ----------
+\titleformat{\section}
+  {\color{accent}\large\bfseries}{}{0pt}{\MakeUppercase}
+  [\vspace{-0.5em}{\color{accent}\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{0.4em}{0.45em}
+
+\setlist[itemize]{leftmargin=1.25em,itemsep=2.5pt,topsep=3pt,parsep=0pt,
+  label={\color{accent}\textbullet}}
+
+% \entry{Organisation}{Dates}{Role / Stack}{Location / Links}
+\newcommand{\entry}[4]{%
+  {\bfseries #1} \hfill {\color{muted}#2}\\
+  {\color{accent}\itshape #3} \hfill {\color{muted}\small #4}\par
+  \vspace{1pt}}
+
+\newcommand{\sep}{\hspace{4pt}{\color{muted}|}\hspace{4pt}}
+
+\begin{document}
+
+% ---------- Header ----------
+\vspace*{-6pt}
+\begin{center}
+  {\fontsize{22}{26}\selectfont\bfseries\color{accent}
+    Jerenason Junnot Daniel}\\[3pt]
+  {\large\bfseries\color{muted} Full-Stack Web Developer}\\[4pt]
+  {\small
+    Antananarivo, Madagascar\sep
+    +261 34 07 677 91\sep
+    \href{mailto:jerenasonjunnot@gmail.com}{jerenasonjunnot@gmail.com}\\[2pt]
+    \href{https://junnotdaniel.vercel.app}{junnotdaniel.vercel.app}\sep
+    \href{https://www.linkedin.com/in/junnot-daniel}{linkedin.com/in/junnot-daniel}\sep
+    \href{https://github.com/junnotdaniel13}{github.com/junnotdaniel13}}
+\end{center}
+\vspace{-6pt}
+
+\vfill
+
+% ---------- Summary ----------
+% \section*{Summary}
+% Full-Stack Web Developer with 3+ years of experience building and shipping
+% production web applications using TypeScript, React, Next.js, Node.js, and
+% FastAPI. Engineered and maintained 6+ customer-facing platforms for an
+% international renewable energy company, including financial simulation
+% engines, B2B administrative portals, automated PDF reporting, and
+% notification services. Experienced in owning features end to end from
+% database design to cloud deployment in remote, cross-functional teams.
+
+% ---------- Education ----------
+\section*{Education}
+\entry{Brigham Young University--Idaho (BYU-Pathway Worldwide)}{Expected Dec 2027}%
+{B.S. in Software Development}{Online}
+{\small\color{muted}\textbf{Relevant Coursework:} Object-Oriented
+Programming, Software Design, Web Frontend Development, Database Design \&
+SQL.}\par
+\vspace{5pt}
+
+\entry{Higher Institute of Computer Science and Business Management (ISIME)}%
+{Oct 2019 -- Nov 2022}{Diploma in Computer Science}{Antananarivo, Madagascar}
+
+\vfill
+
+% ---------- Experience ----------
+\section*{Professional Experience}
+\entry{FINAMAD}{May 2023 -- Present}%
+{Full-Stack Web Developer}{Antananarivo, Madagascar}
+\begin{itemize}
+  \item Engineered commercial solar leasing platforms featuring a 20-year
+        energy indexation simulator and ROI calculator, reducing customer
+        quote turnaround time by \textbf{35\%}.
+  \item Spearheaded the development of B2B administrative portals to manage
+        enterprise simulations, equipment inventory, and \textbf{500+} lease
+        contracts across their full lifecycle.
+  \item Architected token-based JWT authentication and automated PDF report
+        generation services adopted by \textbf{100+} international solar
+        installers to export feasibility reports.
+  \item Developed a supplier management dashboard and asynchronous
+        notification service using Node.js and FastAPI, accelerating new
+        supplier onboarding by \textbf{20\%}.
+  \item Led the end-to-end delivery of a field audit scheduling application,
+        enabling engineering teams to coordinate site inspections and
+        optimize solar panel placement.
+  \item Optimized frontend rendering and REST API calls across two
+        high-traffic web portals by refactoring reusable React components,
+        reducing page load time by \textbf{15\%}.
+\end{itemize}
+\vspace{2pt}
+{\small\color{muted}\textbf{Stack:} TypeScript, React, Next.js, Node.js, Laravel, 
+FastAPI, PostgreSQL, MySQL, Docker}
+
+\vfill
+
+% ---------- Projects ----------
+\section*{Projects}
+\entry{Pulse -- Multi-Tenant SaaS Analytics Platform}{Jan 2026 -- Apr 2026}%
+{Next.js, TypeScript, Supabase, Stripe, Tailwind CSS}%
+{\href{https://pulse-dashboard-theta-swart.vercel.app/}{Live Demo}\sep
+ \href{https://github.com/junnot-daniel}{GitHub}}
+\begin{itemize}
+  \item Designed and built a multi-tenant SaaS dashboard with real-time
+        revenue metrics, 30-day interactive charts, and role-based team
+        invitation workflows.
+  \item Integrated Stripe subscription webhooks and secured tenant data with
+        PostgreSQL Row-Level Security in Supabase, maintaining API query
+        latency under \textbf{200ms}.
+\end{itemize}
+\vspace{5pt}
+
+\entry{AI-Powered Personal Finance REST API}{May 2025 -- Aug 2025}%
+{Node.js, TypeScript, OpenAI API, MongoDB, Docker, Nginx}%
+{\href{https://github.com/junnot-daniel}{GitHub}}
+\begin{itemize}
+  \item Initiated and built a backend REST API for a mobile finance
+        application that uses OpenAI models to categorize transactions and
+        generate personalized budget insights.
+  \item Deployed containerized services with Docker on a Linux VPS behind
+        Nginx and added compound MongoDB indexes to keep response times
+        under \textbf{150ms}.
+\end{itemize}
+
+\vfill
+
+% ---------- Skills ----------
+\section*{Technical Skills}
+\textbf{Languages:} TypeScript, JavaScript, Python, PHP, SQL, HTML5, CSS3\\[2.5pt]
+\textbf{Frontend:} React, Next.js, Angular, Tailwind CSS, Responsive UI Design\\[2.5pt]
+\textbf{Backend:} Node.js, Express, FastAPI, Laravel, REST APIs, JWT Authentication\\[2.5pt]
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB, Supabase (Row-Level Security)\\[2.5pt]
+\textbf{DevOps \& Integrations:} Docker, Nginx, Linux VPS, Git, GitHub, Postman, Figma, Stripe API, OpenAI API
+
+\end{document}

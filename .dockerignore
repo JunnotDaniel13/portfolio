@@ -1,0 +1,13 @@
+node_modules
+dist
+.output
+.nitro
+.tanstack
+.next
+.env*
+.git
+.omc
+docs
+coverage
+playwright-report
+test-results
