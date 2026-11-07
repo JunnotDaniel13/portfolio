@@ -54,7 +54,7 @@ export const Route = createFileRoute('/{-$locale}/')({
           url: siteOrigin,
           email: 'mailto:jerenasonjunnot@gmail.com',
           jobTitle: 'Full-stack JavaScript developer',
-          worksFor: { '@type': 'Organization', name: 'Solar Transit Africa Ltd' },
+          worksFor: { '@type': 'Organization', name: 'FINAMAD' },
           sameAs: [
             'https://github.com/junnot-daniel',
             'https://github.com/junnotdaniel13',

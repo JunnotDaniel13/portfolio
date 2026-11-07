@@ -25,7 +25,7 @@ export const messages: Messages = {
     monogram: 'JD — Jerenason Junnot Daniel',
   },
   hero: {
-    status: 'Actuellement : développement web full-stack chez Solar Transit Africa Ltd, Antananarivo',
+    status: 'Actuellement : développement web full-stack chez FINAMAD, Antananarivo',
     title: 'Jerenason Junnot Daniel : du JavaScript full-stack, de la base de données au navigateur.',
     write: 'Écrire un message',
     copy: 'Copier l’adresse e-mail',
