@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { lookupMessage, type MessageKey } from '../src/i18n/config'
+import { loadMessages, lookupMessage, yearsOfExperience, type MessageKey } from '../src/i18n/config'
 import { messages as en } from '../src/locales/en'
 import { messages as fr } from '../src/locales/fr'
 
@@ -23,7 +23,21 @@ describe('message lookup', () => {
       expect(lookupMessage(fr, key as MessageKey).trim(), `fr ${key}`).not.toBe('')
     }
   })
-  it('uses no ICU placeholders (so a plain lookup is correct)', () => {
-    for (const key of leafKeys(en)) expect(lookupMessage(en, key as MessageKey), key).not.toMatch(/\{[a-zA-Z]+/)
+  it('leaves no unresolved placeholders once messages are loaded', async () => {
+    for (const locale of ['en', 'fr'] as const) {
+      const loaded = await loadMessages(locale)
+      for (const key of leafKeys(loaded)) expect(lookupMessage(loaded, key as MessageKey), `${locale} ${key}`).not.toMatch(/\{[a-zA-Z]+/)
+    }
+  })
+})
+
+describe('yearsOfExperience (career start May 2023)', () => {
+  it('counts completed years and ticks up each May', () => {
+    expect(yearsOfExperience(new Date(2024, 3, 30))).toBe(1) // before May 2024 → floor at 1
+    expect(yearsOfExperience(new Date(2024, 4, 1))).toBe(1)
+    expect(yearsOfExperience(new Date(2025, 3, 30))).toBe(1)
+    expect(yearsOfExperience(new Date(2025, 4, 1))).toBe(2)
+    expect(yearsOfExperience(new Date(2026, 10, 7))).toBe(3)
+    expect(yearsOfExperience(new Date(2027, 4, 1))).toBe(4)
   })
 })

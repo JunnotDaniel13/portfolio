@@ -102,7 +102,7 @@ export const messages: Messages = {
   },
   about: {
     imageAlt: 'Portrait de Jerenason Junnot Daniel',
-    first: 'Jerenason Junnot Daniel : plus de 2 ans d’expérience en développement web full-stack, avec la conception, le déploiement et la maintenance d’applications web évolutives dans les énergies renouvelables et le SaaS. Maîtrise de TypeScript, React, Next.js, Node.js et FastAPI.',
+    first: 'Jerenason Junnot Daniel : plus de {years} ans d’expérience en développement web full-stack, avec la conception, le déploiement et la maintenance d’applications web évolutives dans les énergies renouvelables et le SaaS. Maîtrise de TypeScript, React, Next.js, Node.js et FastAPI.',
     second: 'Livraison de fonctionnalités de bout en bout, des moteurs de simulation dynamiques aux services de notification automatisés et portails d’administration, et formation en cours en conception logicielle via BYU-Pathway Worldwide. Autonomie et volonté de rendre le web plus accessible.',
   },
   skills: {
