@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Junnot Daniel — design mock (A6)</title>
+<style>
+/* Static visual mock of docs/design/04-final-design-spec.md. Tokens, type scale and content are the spec's.
+   The mock uses a tiny script only to switch lang/theme from the URL (?lang=fr&theme=light); the real site is CSS/SSR-first. */
+@font-face{font-family:"Geist";src:url("../../../app/fonts/GeistVF.woff") format("woff");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("../../../app/fonts/GeistMonoVF.woff") format("woff");font-weight:100 900;font-display:swap}
+:root{color-scheme:light dark;
+ --bg:#0b0d12;--surface:#12151c;--text:#e8eaf0;--muted:#9aa3b5;--subtle:#8b94a7;--accent:#5eead4;--accent-hover:#99f6e4;--on-accent:#04201c;
+ --border:#6f7a90;--rule:#232834;--chip-bg:#12151c;--chip-text:#e8eaf0;--numeral:#566078;--bar-h:4rem;
+ --sans:"Geist",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,monospace}
+html[data-theme=light]{--bg:#fafaf7;--surface:#ffffff;--text:#14161c;--muted:#4b5363;--subtle:#5b6474;--accent:#0f766e;--accent-hover:#115e59;--on-accent:#ffffff;
+ --border:#7a8394;--rule:#e3e5ea;--chip-bg:#f0f0ea;--chip-text:#14161c;--numeral:#858ea1}
+*{box-sizing:border-box}
+html{scroll-padding-top:var(--bar-h);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.65 var(--sans);text-wrap:pretty}
+a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fr{display:none}html[lang=fr] .fr{display:inline}html[lang=fr] .en{display:none}
+html[lang=en] .lang.fr{display:none}html[lang=fr] .lang.en{display:none}html[lang=en] .lang.en,html[lang=fr] .lang.fr{display:inline-flex}
+html[lang=fr] p .fr,html[lang=fr] .blk.fr{display:inline}
+.blk.fr{display:none}html[lang=fr] .blk.fr{display:block}html[lang=fr] .blk.en{display:none}
+.mono{font-family:var(--mono);font-size:.8125rem;color:var(--subtle)}
+.nb{white-space:nowrap}
+/* layout */
+.rail{display:none}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.5rem 1rem;min-height:var(--bar-h)}
+.bar .logo{margin-right:auto;font-weight:700;color:var(--text);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.bar .logo .full{display:none}
+.btn-i,.lang{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:.5rem;background:transparent;color:var(--text);text-decoration:none;font:600 .875rem var(--sans);padding:0 .6rem}
+.main{padding:2rem 1rem 4rem;max-width:64rem}
+@media (min-width:480px){.bar .logo .full{display:inline}.bar .logo .jd{display:none}}
+@media (min-width:640px){.main{padding:3rem 2rem 5rem}}
+@media (min-width:1100px){
+ body{display:grid;grid-template-columns:clamp(13.5rem,16vw,15rem) 1fr}
+ .bar{display:none}
+ :root{--bar-h:0rem}
+ .rail{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:0;align-self:start;max-height:100dvh;overflow-y:auto;padding:2rem 1.25rem;border-right:1px solid var(--rule);height:100dvh}
+ .main{padding:2.5rem 3rem 6rem}
+}
+.rail .name{font-weight:700;font-size:1.0625rem;color:var(--text);text-decoration:none}
+.rail ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.rail li a{display:grid;grid-template-columns:2rem 1fr;align-items:center;min-height:44px;color:var(--muted);text-decoration:none;font-size:.95rem}
+.rail li a .n{font:500 .75rem var(--mono);color:var(--subtle)}
+.rail li a{position:relative;padding-inline-start:.25rem}
+.rail li a[aria-current]{color:var(--text);font-weight:600}
+.rail li a[aria-current]::after{content:"";position:absolute;inset-block:.6rem;inset-inline-start:-1.25rem;width:3px;border-radius:2px;background:var(--accent)}
+.rail li a[aria-current] .n{color:var(--accent)}
+.rail .ctl{margin-top:auto;display:flex;flex-direction:column;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.1rem;border-radius:.5rem;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--border);color:var(--text);background:transparent;font-family:var(--sans)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent-hover);color:var(--on-accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:.5rem;overflow:hidden}
+.seg button{flex:1;min-height:44px;background:transparent;border:0;color:var(--muted);font:500 .8rem var(--sans)}
+.seg button[aria-pressed=true]{background:var(--surface);color:var(--text);box-shadow:inset 0 -2px 0 var(--accent)}
+.legend{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--subtle)}
+/* hero */
+.hero{padding-bottom:1.5rem}
+.status{margin:0 0 1rem}
+.nb{white-space:nowrap}
+h1{font:800 clamp(1.875rem,5vw + .5rem,4rem)/1.05 var(--sans);letter-spacing:-.03em;margin:0 0 1.25rem;text-wrap:balance;max-width:20ch}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
+.email{display:block;font:500 1rem var(--mono);margin:0 0 1rem;overflow-wrap:anywhere}
+.lede{color:var(--muted);font-size:1.15rem;max-width:60ch;margin:0}
+/* sections */
+section{padding-top:2rem;border-top:1px solid var(--rule);margin-top:2.25rem}
+.numeral{display:block;font:800 clamp(2.5rem,6vw,4rem)/1 var(--sans);color:transparent;-webkit-text-stroke:1px var(--numeral);letter-spacing:-.02em;margin-bottom:.25rem}
+@media (max-width:639px){.numeral{display:none}}
+h2{font:700 clamp(1.75rem,3vw,2.25rem)/1.15 var(--sans);letter-spacing:-.02em;margin:0 0 .5rem;text-wrap:balance}
+.meta{margin:0 0 1.5rem}
+h3{font:600 1.125rem/1.3 var(--sans);margin:0}
+/* work */
+.work{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.25rem}
+.proj{display:grid;grid-template-columns:6rem 1fr;gap:1rem;align-items:start}
+.proj .thumb{width:6rem;height:6rem;border-radius:.75rem;object-fit:cover;object-position:top;border:1px solid var(--border);background:var(--surface)}
+html[data-theme=dark] .proj .thumb{filter:brightness(.9) contrast(.96)}
+.proj .idx{font:500 .75rem var(--mono);color:var(--subtle)}
+.proj p{margin:.35rem 0 .75rem;color:var(--muted)}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.chips li{background:var(--chip-bg);color:var(--chip-text);border:1px solid var(--rule);border-radius:999px;padding:.15rem .7rem;font:500 .8125rem var(--mono)}
+html[data-theme=light] .chips li{border-color:#d4d7de}
+details{margin-top:.75rem}
+summary{min-height:44px;display:flex;align-items:center;gap:.5rem;cursor:pointer;color:var(--accent);font-weight:600;font-size:.95rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:.55rem;height:.55rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+details[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+@media (forced-colors:active){summary::after{border-color:CanvasText}}
+details p{margin:.25rem 0 0}
+@media (min-width:640px){.proj{grid-template-columns:minmax(0,40%) 1fr;gap:1.5rem}.proj .thumb{width:100%;height:auto;aspect-ratio:16/10}}
+/* dl */
+dl.exp{display:grid;gap:1.5rem}
+@media (min-width:640px){dl.exp{grid-template-columns:1fr 1fr}}
+dl.exp div{border-top:1px solid var(--rule);padding-top:.75rem}
+dl.exp dt{font-weight:600}dl.exp dd{margin:.15rem 0 0}
+/* about */
+.about{display:grid;gap:1.5rem}
+.about img{width:220px;height:220px;border-radius:1rem;object-fit:cover;border:1px solid var(--rule)}
+@media (min-width:760px){.about{grid-template-columns:220px 1fr;gap:2.5rem}}
+.about p{max-width:68ch;margin:0 0 1rem;color:var(--muted)}
+/* skills */
+.sk h3{font-size:1rem;color:var(--text);margin:1.25rem 0 .5rem}
+/* education */
+ol.edu{list-style:none;margin:0;padding:0;display:grid;gap:1.25rem}
+ol.edu li{border-top:1px solid var(--rule);padding-top:.75rem}
+/* contact */
+.contact{display:grid;gap:2.5rem}
+@media (min-width:900px){.contact{grid-template-columns:1fr 1.2fr}}
+.contact address{font-style:normal;color:var(--muted);display:grid;gap:.4rem;margin-bottom:1.25rem}
+.contact ul.soc{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.contact ul.soc a{display:inline-flex;min-height:44px;align-items:center}
+form{display:grid;gap:1rem;max-width:34rem}
+label{display:block;font-weight:600;margin-bottom:.25rem}
+.hint{font-size:.85rem;color:var(--subtle);margin:0 0 .35rem}
+input,textarea{width:100%;font:400 1rem var(--sans);color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:.65rem .8rem;min-height:44px}
+textarea{min-height:8rem;resize:vertical}
+.menu{position:fixed;top:var(--bar-h);left:0;right:0;z-index:6;max-height:calc(100dvh - var(--bar-h));overflow-y:auto;background:var(--surface);border-bottom:1px solid var(--border);padding:.5rem 1rem 1rem;display:none}
+.menu.open{display:block}
+.menu a{display:flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none;gap:.75rem}
+.menu a .n{font:500 .75rem var(--mono);color:var(--subtle);width:1.5rem}
+.menu .seg{margin-top:.75rem}
+.statusbox{border:1px solid var(--border);border-inline-start:4px solid #fca5a5;border-radius:.5rem;padding:.9rem 1rem;margin-bottom:1.25rem;background:var(--surface)}
+html[data-theme=light] .statusbox{border-inline-start-color:#b91c1c}
+.statusbox h3{font-size:1rem;margin:0 0 .4rem}.statusbox ul{margin:0;padding-inline-start:1.1rem}
+.err{color:#fca5a5;font-size:.9rem;margin:.35rem 0 0}html[data-theme=light] .err{color:#b91c1c}
+input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#fca5a5;border-width:2px}html[data-theme=light] input[aria-invalid=true],html[data-theme=light] textarea[aria-invalid=true]{border-color:#b91c1c}
+.hidden{display:none}
+body.only-work .hero,body.only-work section:not(#work),body.only-work footer{display:none}
+body.only-contact .hero,body.only-contact section:not(#contact),body.only-contact footer{display:none}
+body.only-work #work,body.only-contact #contact{border-top:0;margin-top:0}
+footer{margin-top:5rem;padding-top:1.5rem;border-top:1px solid var(--rule);color:var(--subtle);font-size:.9rem}
+.skip{position:absolute;left:-999px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- desktop rail -->
+<header class="rail">
+  <a class="name" href="#top">Junnot Daniel</a>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#work" aria-current="location"><span class="n" aria-hidden="true">01</span><span><span class="en">Work</span><span class="fr">Projets</span></span></a></li>
+      <li><a href="#experience"><span class="n" aria-hidden="true">02</span><span><span class="en">Experience</span><span class="fr">Expérience</span></span></a></li>
+      <li><a href="#about"><span class="n" aria-hidden="true">03</span><span><span class="en">About</span><span class="fr">À propos</span></span></a></li>
+      <li><a href="#skills"><span class="n" aria-hidden="true">04</span><span><span class="en">Skills</span><span class="fr">Compétences</span></span></a></li>
+      <li><a href="#education"><span class="n" aria-hidden="true">05</span><span><span class="en">Education</span><span class="fr">Formation</span></span></a></li>
+      <li><a href="#contact"><span class="n" aria-hidden="true">06</span><span><span class="en">Contact</span><span class="fr">Contact</span></span></a></li>
+    </ul>
+  </nav>
+  <div class="ctl">
+    <a class="btn" href="#contact"><span class="en">Contact</span><span class="fr">Me contacter</span></a>
+    <nav aria-label="Language"><a class="lang en" href="?lang=fr" lang="fr" hreflang="fr">Français</a><a class="lang fr" href="?lang=en" lang="en" hreflang="en">English</a></nav>
+    <div role="group" aria-labelledby="th"><div class="legend" id="th"><span class="en">Theme</span><span class="fr">Thème</span></div>
+      <div class="seg"><button aria-pressed="false">System</button><button aria-pressed="false" id="tl">Light</button><button aria-pressed="true" id="td">Dark</button></div></div>
+  </div>
+</header>
+
+<!-- mobile / tablet top bar -->
+<header class="bar">
+  <a class="logo" href="#top"><span class="full">Junnot Daniel</span><span class="jd" aria-hidden="true">JD</span><span class="sr-only">JD — Junnot Daniel</span></a>
+  <nav aria-label="Language" style="display:contents"><a class="lang en" href="?lang=fr" lang="fr" hreflang="fr">Français</a><a class="lang fr" href="?lang=en" lang="en" hreflang="en">English</a></nav>
+  <a class="btn-i" href="#contact" aria-label="Contact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+  <button class="btn-i" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+
+<nav class="menu" id="menu" aria-label="Sections">
+  <a href="#work"><span class="n" aria-hidden="true">01</span><span><span class="en">Work</span><span class="fr">Projets</span></span></a>
+  <a href="#experience"><span class="n" aria-hidden="true">02</span><span><span class="en">Experience</span><span class="fr">Expérience</span></span></a>
+  <a href="#about"><span class="n" aria-hidden="true">03</span><span><span class="en">About</span><span class="fr">À propos</span></span></a>
+  <a href="#skills"><span class="n" aria-hidden="true">04</span><span><span class="en">Skills</span><span class="fr">Compétences</span></span></a>
+  <a href="#education"><span class="n" aria-hidden="true">05</span><span><span class="en">Education</span><span class="fr">Formation</span></span></a>
+  <a href="#contact"><span class="n" aria-hidden="true">06</span><span><span class="en">Contact</span><span class="fr">Contact</span></span></a>
+  <div role="group" aria-labelledby="th2"><div class="legend" id="th2"><span class="en">Theme</span><span class="fr">Thème</span></div><div class="seg"><button aria-pressed="false">System</button><button aria-pressed="false">Light</button><button aria-pressed="true">Dark</button></div></div>
+</nav>
+<main class="main" id="main">
+  <div id="top" class="hero">
+    <p class="mono status"><span class="en">Currently: <span class="nb">Full-stack</span> developer at SFER Madagascar / FINAMAD, Antananarivo</span><span class="fr">Actuellement : développement <span class="nb">full-stack</span> chez SFER Madagascar / FINAMAD, Antananarivo</span></p>
+    <h1><span class="en">Junnot Daniel: <span class="nb">full-stack</span> JavaScript, from the database to the browser.</span><span class="fr">Junnot Daniel : du JavaScript <span class="nb">full-stack</span>, de la base de données au navigateur.</span></h1>
+    <div class="actions">
+      <a class="btn primary" href="#contact"><span class="en">Write a message</span><span class="fr">Écrire un message</span></a>
+      <button class="btn" type="button"><span class="en">Copy email address</span><span class="fr">Copier l’adresse e-mail</span></button>
+      <a class="btn" href="https://junnotdaniel13.github.io/resume/" hreflang="en"><span class="en">Résumé<span class="sr-only"> (opens in a new tab)</span></span><span class="fr">CV<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></span></a>
+    </div>
+    <a class="email" href="mailto:jerenasonjunnot@gmail.com">jerenasonjunnot@gmail.com</a>
+    <p class="lede"><span class="en">React, Node.js and Express, SQL and MongoDB, shipped with Docker. Self-driven and committed to making the web more accessible. Open to job opportunities that fit this skill set.</span><span class="fr">React, Node.js et Express, SQL et MongoDB, livrés avec Docker. Autonome, avec la volonté de rendre le web plus accessible. À l’écoute d’opportunités professionnelles en phase avec ce profil.</span></p>
+  </div>
+
+  <section id="work" aria-labelledby="h-work">
+    <span class="numeral" aria-hidden="true">01</span>
+    <h2 id="h-work" tabindex="-1"><span class="en">Selected work</span><span class="fr">Projets sélectionnés</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">4 projects</span><span class="fr">4 projets</span></p>
+    <ul class="work">
+      <li><article class="proj"><img class="thumb" src="../../../public/image/crefin.jpg" width="480" height="300" alt=""><div>
+        <h3><span class="en">AI Powered Financial App</span><span class="fr">Application financière dopée à l’IA</span></h3>
+        <div class="mono">Backend</div>
+        <p><span class="en">API for an AI-powered financial mobile app, built with Express, TypeScript, OpenAI, AWS and MongoDB.</span><span class="fr">API d’une application mobile financière dopée à l’IA, construite avec Express, TypeScript, OpenAI, AWS et MongoDB.</span></p>
+        <ul class="chips"><li>Express</li><li>MongoDB</li><li>OpenAI API</li><li>AWS SES</li><li>AWS S3</li></ul>
+        <details><summary><span><span class="en">Details</span><span class="fr">Détails</span><span class="sr-only"> — AI Powered Financial App</span></span></summary><p><span class="en">Built the API with Express, TypeScript, OpenAI, AWS and MongoDB. OTP via AWS SES, Google and Facebook authentication, AI assistants on OpenAI’s latest model, voice-to-text with AWS Transcribe, PDF term sheets sent through AWS SES.</span><span class="fr">API construite avec Express, TypeScript, OpenAI, AWS et MongoDB. OTP via AWS SES, authentification Google et Facebook, assistants IA, transcription vocale avec AWS Transcribe, fiches PDF envoyées via AWS SES.</span></p></details>
+      </div></article></li>
+      <li><article class="proj"><img class="thumb" src="../../../public/image/travel.jpg" width="480" height="300" alt="" loading="lazy"><div>
+        <h3><span class="en">Travel Agency App</span><span class="fr">Application d’agence de voyage</span></h3>
+        <div class="mono">Full-stack</div>
+        <p><span class="en">Multilingual full-stack web app for a travel agency in Armenia (Next.js, NestJS, MySQL, AWS).</span><span class="fr">Application web full-stack multilingue pour une agence de voyage en Arménie (Next.js, NestJS, MySQL, AWS).</span></p>
+        <ul class="chips"><li>Next.js</li><li>Tailwind CSS</li><li>NestJS</li><li>MySQL</li><li>AWS S3</li></ul>
+        <details><summary><span><span class="en">Details</span><span class="fr">Détails</span><span class="sr-only"> — Travel Agency App</span></span></summary><p><span class="en">UI with Next.js, TypeScript, MUI, Tailwind, Google Maps; multiple languages and currencies; API with NestJS, MySQL, TypeORM, AWS and Nodemailer; front end on AWS Amplify, back end on EC2.</span><span class="fr">Interface avec Next.js, TypeScript, MUI, Tailwind, Google Maps ; plusieurs langues et devises ; API avec NestJS, MySQL, TypeORM, AWS et Nodemailer ; front sur AWS Amplify, back sur EC2.</span></p></details>
+      </div></article></li>
+      <li><article class="proj"><img class="thumb" src="../../../public/image/real-estate.jpg" width="480" height="300" alt="" loading="lazy"><div>
+        <h3><span class="en">AI Powered Real Estate</span><span class="fr">Immobilier dopé à l’IA</span></h3>
+        <div class="mono">Full-stack</div>
+        <p><span class="en">AI-based real estate platform with role-based auth, subscription plans and Stripe payments.</span><span class="fr">Plateforme immobilière dopée à l’IA avec authentification par rôles, abonnements et paiements Stripe.</span></p>
+        <ul class="chips"><li>React</li><li>Express</li><li>TypeScript</li><li>MongoDB</li><li>Stripe</li></ul>
+        <details><summary><span><span class="en">Details</span><span class="fr">Détails</span><span class="sr-only"> — AI Powered Real Estate</span></span></summary><p><span class="en">API with Express, TypeScript, OpenAI, Replicate, Stripe and Mongoose; UI with Next.js, Formik and Tailwind. Role-based auth, subscription plans, cron jobs and Stripe payments.</span><span class="fr">API avec Express, TypeScript, OpenAI, Replicate, Stripe et Mongoose ; interface avec Next.js, Formik et Tailwind. Authentification par rôles, abonnements, tâches planifiées et paiements Stripe.</span></p></details>
+      </div></article></li>
+      <li><article class="proj"><img class="thumb" src="../../../public/image/ayla.jpg" width="480" height="300" alt="" loading="lazy"><div>
+        <h3><span class="en">Newsroom Management</span><span class="fr">Gestion de rédaction</span></h3>
+        <div class="mono">Full-stack</div>
+        <p><span class="en">Newspaper management dashboard built with Next.js, Material UI and Redux.</span><span class="fr">Tableau de bord de gestion de rédaction construit avec Next.js, Material UI et Redux.</span></p>
+        <ul class="chips"><li>Next.js</li><li>Material UI</li><li>Redux</li><li>Sun Editor</li></ul>
+        <details><summary><span><span class="en">Details</span><span class="fr">Détails</span><span class="sr-only"> — Newsroom Management</span></span></summary><p><span class="en">Front-end of a newspaper management dashboard: Next.js, Material UI, Redux for state, React Hook Form and Sun Editor for forms.</span><span class="fr">Front-end d’un tableau de bord de gestion de journal : Next.js, Material UI, Redux pour l’état, React Hook Form et Sun Editor pour les formulaires.</span></p></details>
+      </div></article></li>
+    </ul>
+  </section>
+
+  <section id="experience" aria-labelledby="h-exp">
+    <span class="numeral" aria-hidden="true">02</span>
+    <h2 id="h-exp" tabindex="-1"><span class="en">Experience</span><span class="fr">Expérience</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">2 roles</span><span class="fr">2 postes</span></p>
+    <dl class="exp">
+      <div><dt><span class="en">FullStack Developer</span><span class="fr">Développement full-stack</span> · SFER Madagascar / FINAMAD</dt><dd class="mono"><span class="en">May 2023 – Present</span><span class="fr">mai 2023 – aujourd’hui</span></dd></div>
+      <div><dt><span class="en">FullStack Developer</span><span class="fr">Développement full-stack</span> · Fiverr (freelance)</dt><dd class="mono"><span class="en">Jun 2022 – Apr 2023</span><span class="fr">juin 2022 – avr. 2023</span></dd></div>
+    </dl>
+  </section>
+
+  <section id="about" aria-labelledby="h-about">
+    <span class="numeral" aria-hidden="true">03</span>
+    <h2 id="h-about" tabindex="-1"><span class="en">About</span><span class="fr">À propos</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">Who I am</span><span class="fr">Qui je suis</span></p>
+    <div class="about"><img src="../../../public/profile.png" width="220" height="220" alt="Junnot Daniel" loading="lazy"><div>
+      <p><span class="en">My name is Junnot Daniel, and I’m a passionate and dedicated programmer. I thrive on learning and exploring new technologies, with a strong self-driven attitude toward growth. Problem-solving excites me, and I’m deeply committed to making the web more accessible and open to everyone.</span><span class="fr">Je m’appelle Junnot Daniel et je suis un programmeur passionné et dévoué. J’aime apprendre et explorer de nouvelles technologies, avec une forte volonté d’auto-amélioration. Résoudre des problèmes m’enthousiasme et je suis profondément engagé à rendre le web plus accessible et ouvert à tous.</span></p>
+      <p><span class="en">My expertise lies in JavaScript, which I use extensively across various aspects of web application development. I am open to job opportunities that align with my skills and interests.</span><span class="fr">Mon expertise réside dans JavaScript, que j’utilise largement dans divers aspects du développement d’applications web. Je suis ouvert à des opportunités professionnelles qui correspondent à mes compétences et mes intérêts.</span></p>
+    </div></div>
+  </section>
+
+  <section id="skills" class="sk" aria-labelledby="h-skills">
+    <span class="numeral" aria-hidden="true">04</span>
+    <h2 id="h-skills" tabindex="-1"><span class="en">Skills</span><span class="fr">Compétences</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">6 groups</span><span class="fr">6 groupes</span></p>
+    <h3><span class="en">Frontend Development</span><span class="fr">Développement front-end</span></h3><ul class="chips"><li>HTML5</li><li>CSS</li><li>React</li><li>Next.js</li><li>Angular</li><li>Tailwind CSS</li><li>Bootstrap</li></ul>
+    <h3><span class="en">Backend Development</span><span class="fr">Développement back-end</span></h3><ul class="chips"><li>Node.js</li><li>Express</li><li>Hono</li><li>FastAPI</li><li>Laravel</li></ul>
+    <h3><span class="en">Languages</span><span class="fr">Langages</span></h3><ul class="chips"><li>JavaScript</li><li>TypeScript</li><li>Python</li><li>Php</li></ul>
+    <h3><span class="en">Databases</span><span class="fr">Bases de données</span></h3><ul class="chips"><li>MongoDB</li><li>MySQL</li><li>PostgreSQL</li><li>SQLite</li></ul>
+    <h3><span class="en">Tools &amp; DevOps</span><span class="fr">Outils &amp; DevOps</span></h3><ul class="chips"><li>Git</li><li>Docker</li><li>Linux</li><li>Ubuntu</li><li>Windows</li></ul>
+    <h3>Design</h3><ul class="chips"><li>Canva</li><li>Figma</li><li>Photoshop</li></ul>
+  </section>
+
+  <section id="education" aria-labelledby="h-edu">
+    <span class="numeral" aria-hidden="true">05</span>
+    <h2 id="h-edu" tabindex="-1"><span class="en">Education</span><span class="fr">Formation</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">3 entries</span><span class="fr">3 entrées</span></p>
+    <ol class="edu">
+      <li><strong><span class="en">Bachelor Degree</span><span class="fr">Licence</span></strong><div>Institut Supérieur de l’informatique et du Management d’Entreprise</div><div class="mono">2019 – 2022</div></li>
+      <li><strong><span class="en">Professional Baccalaureate in Electronics</span><span class="fr">Baccalauréat professionnel en électronique</span></strong><div>Lycée Technique Professionnel Alarobia</div><div class="mono">2016 – 2019</div></li>
+      <li><strong><span class="en">Arduino programming training</span><span class="fr">Formation à la programmation Arduino</span></strong><div>Lycée Technique Professionnel Alarobia</div><div class="mono">2018</div></li>
+    </ol>
+  </section>
+
+  <section id="contact" aria-labelledby="h-contact">
+    <span class="numeral" aria-hidden="true">06</span>
+    <h2 id="h-contact" tabindex="-1"><span class="en">Contact</span><span class="fr">Me contacter</span></h2>
+    <p class="mono meta" aria-hidden="true"><span class="en">Replies by email</span><span class="fr">Réponse par e-mail</span></p>
+    <div class="contact">
+      <div>
+        <address><a href="mailto:jerenasonjunnot@gmail.com">jerenasonjunnot@gmail.com</a><a href="tel:+261340767791">+261 34 07 677 91</a><span>LOT II J 82 GC BIS IVANDRY</span></address>
+        <ul class="soc"><li><a href="#">GitHub</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">X (Twitter)</a></li><li><a href="#">Facebook</a></li></ul>
+      </div>
+      <form>
+        <div class="statusbox hidden" id="contact-status" tabindex="-1" role="alert"><h3><span class="en">Your message wasn't sent</span><span class="fr">Votre message n’a pas été envoyé</span></h3><ul><li><a href="#f-email"><span class="en">Your email: enter a valid address</span><span class="fr">Votre e-mail : saisissez une adresse valide</span></a></li><li><a href="#f-msg"><span class="en">Your message: at least 10 characters</span><span class="fr">Votre message : 10 caractères minimum</span></a></li></ul></div>
+        <div><label for="f-name"><span class="en">Your name</span><span class="fr">Votre nom</span></label><input id="f-name" autocomplete="name"></div>
+        <div><label for="f-email"><span class="en">Your email</span><span class="fr">Votre e-mail</span></label><input id="f-email" type="email" autocomplete="email" aria-describedby="e-email"><p class="err hidden" id="e-email"><span class="en">Enter a valid email address.</span><span class="fr">Saisissez une adresse e-mail valide.</span></p></div>
+        <div><label for="f-msg"><span class="en">Your message</span><span class="fr">Votre message</span></label><p class="hint" id="f-hint"><span class="en">10–500 characters.</span><span class="fr">10 à 500 caractères.</span></p><textarea id="f-msg" aria-describedby="f-hint e-msg"></textarea><p class="err hidden" id="e-msg"><span class="en">Write at least 10 characters.</span><span class="fr">Écrivez au moins 10 caractères.</span></p></div>
+        <div><button class="btn primary" type="button"><span class="en">Send message</span><span class="fr">Envoyer le message</span></button></div>
+      </form>
+    </div>
+  </section>
+
+  <footer><span class="en">© Junnot Daniel · Source on GitHub</span><span class="fr">© Junnot Daniel · Code source sur GitHub</span></footer>
+</main>
+<script>
+// mock-only: ?lang=fr&theme=light
+const q=new URLSearchParams(location.search);
+if(q.get('lang'))document.documentElement.lang=q.get('lang');
+if(q.get('theme')){document.documentElement.dataset.theme=q.get('theme');
+ document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',String(b.textContent.trim().toLowerCase()===q.get('theme'))));}
+
+const st=q.get('state');
+if(st==='menu'){document.getElementById('menu').classList.add('open');document.querySelector('.bar button[aria-label=Menu]').setAttribute('aria-expanded','true');}
+if(st==='details'){document.querySelectorAll('details').forEach(d=>d.open=true);document.body.classList.add('only-work');}
+if(st==='error'){document.getElementById('contact-status').classList.remove('hidden');
+ for(const id of ['e-email','e-msg'])document.getElementById(id).classList.remove('hidden');
+ document.getElementById('f-email').setAttribute('aria-invalid','true');document.getElementById('f-email').value='junnot@';
+ document.getElementById('f-msg').setAttribute('aria-invalid','true');document.getElementById('f-msg').value='Hi';
+ document.getElementById('f-name').value='Alex Martin';document.body.classList.add('only-contact');}
+if(st==='focus'){document.querySelector('.actions .btn.primary').focus();}
+</script>
+</body>
+</html>

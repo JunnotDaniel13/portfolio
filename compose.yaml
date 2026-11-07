@@ -3,6 +3,25 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_SITE_URL: ${VITE_SITE_URL:-https://junnot-daniel.vercel.app}
     image: portfolio
     ports:
       - "3001:3000"
+    env_file:
+      - path: .env.local
+        required: false
+    environment:
+      NODE_ENV: production
+      SITE_URL: ${SITE_URL:-https://junnot-daniel.vercel.app}
+      COOKIE_SECRET: ${COOKIE_SECRET:?Set COOKIE_SECRET in the environment}
+      # No reverse proxy is part of this compose file (port 3001 is published directly), so a client-supplied
+      # header must NOT be trusted. Default: one shared rate-limit bucket. Behind your own trusted proxy, set
+      # CLIENT_IP_HEADER (e.g. x-real-ip) and ALLOW_SHARED_RATE_LIMIT=0.
+      CLIENT_IP_HEADER: ${CLIENT_IP_HEADER:-}
+      ALLOW_SHARED_RATE_LIMIT: ${ALLOW_SHARED_RATE_LIMIT:-1}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3001}
+      EMAIL_ADDRESS: ${EMAIL_ADDRESS:-}
+      GMAIL_PASSKEY: ${GMAIL_PASSKEY:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
