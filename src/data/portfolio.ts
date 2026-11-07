@@ -54,7 +54,7 @@ export const projects = [
 ] as const
 
 export const experiences = [
-  { id: 'solar', company: 'Solar Transit Africa Ltd', bullets: 6 },
+  { id: 'solar', company: 'FINAMAD', bullets: 6 },
 ] as const
 
 export const skillGroups = [

@@ -23,7 +23,7 @@ export const messages = {
     monogram: 'JD — Jerenason Junnot Daniel',
   },
   hero: {
-    status: 'Currently: Full-stack web developer at Solar Transit Africa Ltd, Antananarivo',
+    status: 'Currently: Full-stack web developer at FINAMAD, Antananarivo',
     title: 'Jerenason Junnot Daniel: full-stack JavaScript, from the database to the browser.',
     write: 'Write a message',
     copy: 'Copy email address',
