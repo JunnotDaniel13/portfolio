@@ -1,4 +1,5 @@
-import { mkdir, stat, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
 
@@ -57,3 +58,11 @@ await emit(profile, 'profile', 'png', 30 * 1024, 60 * 1024)
 
 const files = await Promise.all(written.map((file) => stat(file)))
 if (files.some((file) => file.size === 0)) throw new Error('An optimized image is empty')
+
+// Stable filenames + a content hash per file. Components request `/images/<file>?v=<hash>`, so the files can be
+// cached for a year as immutable and a changed image still gets a new URL.
+const versions = {}
+for (const file of written.sort()) {
+  versions[path.basename(file)] = createHash('sha256').update(await readFile(file)).digest('hex').slice(0, 10)
+}
+await writeFile(path.join(root, 'src', 'data', 'image-versions.json'), `${JSON.stringify(versions, null, 2)}\n`)
