@@ -19,9 +19,8 @@ export function WorkSection() {
             <li key={project.id}>
               <article className="proj">
                 <picture>
-                  <source type="image/avif" srcSet={`${image}-192.avif 192w, ${image}-480.avif 480w, ${image}-960.avif 960w`} sizes="(min-width:640px) 24rem, 6rem" />
                   <source type="image/webp" srcSet={`${image}-192.webp 192w, ${image}-480.webp 480w, ${image}-960.webp 960w`} sizes="(min-width:640px) 24rem, 6rem" />
-                  <img className="thumb" src={`${image}-480.webp`} srcSet={`${image}-192.webp 192w, ${image}-480.webp 480w, ${image}-960.webp 960w`} sizes="(min-width:640px) 24rem, 6rem" width="960" height="600" alt={t(`projects.${project.id}.alt`)} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                  <img className="thumb" src={`${image}-480.${project.imageExt}`} srcSet={`${image}-192.${project.imageExt} 192w, ${image}-480.${project.imageExt} 480w, ${image}-960.${project.imageExt} 960w`} sizes="(min-width:640px) 24rem, 6rem" width="960" height="600" alt={t(`projects.${project.id}.alt`)} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
                 </picture>
                 <div>
                   <h3>{name}</h3>
@@ -77,7 +76,7 @@ export function AboutSection() {
     <section id="about" aria-labelledby="h-about">
       <SectionHeader id="about" number="03" titleKey="sections.about" metaKey="sections.aboutMeta" />
       <div className="about">
-        <picture><source type="image/avif" srcSet="/images/profile.avif" /><img src="/images/profile.webp" width="220" height="220" alt={t('about.imageAlt')} loading="lazy" decoding="async" /></picture>
+        <picture><source type="image/webp" srcSet="/images/profile.webp" /><img src="/images/profile.png" width="220" height="220" alt={t('about.imageAlt')} loading="lazy" decoding="async" /></picture>
         <div><p>{t('about.first')}</p><p>{t('about.second')}</p></div>
       </div>
     </section>
