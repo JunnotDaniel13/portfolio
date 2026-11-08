@@ -1,0 +1,33 @@
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem
+}
+
+.chips li {
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: .15rem .7rem;
+  font: 500 .8125rem var(--mono)
+}
+
+:root[data-theme=light] .chips li {
+  border-color: #d4d7de
+}
+
+.skill-group h3 {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 1.25rem 0 .5rem
+}
+
+@media (prefers-color-scheme:light) {
+  :root:not([data-theme]) .chips li {
+    border-color: #d4d7de
+  }
+}

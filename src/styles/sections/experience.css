@@ -1,0 +1,40 @@
+dl.exp {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0
+}
+
+dl.exp div {
+  border-top: 1px solid var(--rule);
+  padding-top: .75rem
+}
+
+dl.exp dt {
+  font-weight: 600
+}
+
+dl.exp dd {
+  margin: .15rem 0 0
+}
+
+dl.exp dd.stack {
+  margin-top: .75rem;
+  font-size: .875rem;
+  color: var(--muted)
+}
+
+dl.exp dd.stack strong {
+  color: var(--text);
+  font-weight: 600
+}
+
+.bullets {
+  margin: .6rem 0 0;
+  padding-inline-start: 1.1rem
+}
+
+.bullets li {
+  margin: .4rem 0;
+  max-width: 68ch;
+  color: var(--muted)
+}

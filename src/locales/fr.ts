@@ -89,15 +89,16 @@ export const messages: Messages = {
     },
   },
   experience: {
+    stack: 'Stack :',
     solar: {
-      title: 'Développement web full-stack',
+      title: 'Développeur web full-stack',
       period: 'mai 2023 – aujourd’hui',
-      b1: 'Pilotage du développement de plateformes de location full-stack pour solar-rent.mu et solar-rent.pro : simulateurs d’indexation énergétique sur 20 ans et calculateurs de ROI commercial, qui ont réduit de 35 % le délai d’établissement des devis.',
-      b2: 'Conception de portails d’administration B2B sur solar-rent.pro pour gérer des simulations d’entreprise multi-scénarios, l’inventaire des équipements et le cycle de vie des contrats de location longue durée.',
-      b3: 'Mise en place d’une authentification par jetons et de la génération dynamique automatisée de rapports PDF pour pvgis.com, permettant à plus de 100 installateurs solaires dans le monde d’exporter des rapports de faisabilité technique.',
-      b4: 'Création d’une interface centralisée de gestion des fournisseurs B2B et d’un service de notification asynchrone pour solardropshipping.com, accélérant de 20 % l’intégration des fournisseurs.',
-      b5: 'Simplification du suivi des visites de site pour solarcenter.mu grâce à une application web de planification d’audits de bout en bout, optimisant les flux de pose de panneaux pour les équipes d’ingénierie terrain.',
-      b6: 'Optimisation de la synchronisation des données sur solarpool.mu et mbs457.mu en reliant des composants d’interface modulaires à des API REST, réduisant de 15 % la latence de chargement des pages.',
+      b1: 'Conception et développement de plateformes de leasing solaire intégrant un simulateur d’indexation énergétique sur 20 ans et un calculateur de ROI, réduisant de 35 % le délai de création de devis.',
+      b2: 'Pilotage du développement de portails d’administration B2B pour gérer les simulations d’entreprise, l’inventaire des équipements et plus de 500 contrats de location sur l’ensemble de leur cycle de vie.',
+      b3: 'Architecture d’un système d’authentification par jetons JWT et de génération automatisée de rapports PDF utilisé par plus de 100 installateurs solaires internationaux.',
+      b4: 'Développement d’un tableau de bord de gestion des fournisseurs et d’un service de notification asynchrone avec Node.js et FastAPI, accélérant de 20 % l’intégration des nouveaux fournisseurs.',
+      b5: 'Réalisation de bout en bout d’une application de planification d’audits terrain, permettant aux équipes d’ingénieurs de coordonner les visites de sites et d’optimiser le placement des panneaux solaires.',
+      b6: 'Optimisation du rendu frontend et des appels d’API REST sur deux portails web à fort trafic via la refactorisation de composants React réutilisables, réduisant de 15 % le temps de chargement.',
     },
   },
   about: {

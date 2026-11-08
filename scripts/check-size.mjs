@@ -31,7 +31,8 @@ for (const [file, cap] of [['geist-latin-wght-normal.woff2', 45 * 1024], ['geist
 }
 for (const file of await readdir(path.join(root, 'public', 'images'))) {
   const size = (await stat(path.join(root, 'public', 'images', file))).size
-  const cap = file.startsWith('profile') ? 30 * 1024 : file.endsWith('.avif') ? 40 * 1024 : 60 * 1024
+  const isWebp = file.endsWith('.webp')
+  const cap = file.startsWith('profile') ? (isWebp ? 30 : 60) * 1024 : (isWebp ? 60 : 120) * 1024
   if (size > cap) throw new Error(`${file} exceeds ${cap} bytes`)
 }
 console.log('All JavaScript, font and image size gates passed.')

@@ -87,15 +87,16 @@ export const messages = {
     },
   },
   experience: {
+    stack: 'Stack:',
     solar: {
       title: 'Full-Stack Web Developer',
       period: 'May 2023 – Present',
-      b1: 'Spearheaded full-stack leasing platforms for solar-rent.mu and solar-rent.pro, creating 20-year energy indexation simulators and commercial ROI calculators that reduced quote turnaround time by 35%.',
-      b2: 'Engineered B2B administrative portals on solar-rent.pro to manage multi-scenario enterprise simulations, equipment inventory, and long-term lease contract lifecycles.',
-      b3: 'Implemented token-based authentication and automated dynamic PDF report generation for pvgis.com, enabling 100+ global solar installers to export technical feasibility reports.',
-      b4: 'Pioneered a centralized B2B supplier management interface and built an asynchronous notification service for solardropshipping.com, accelerating supplier onboarding by 20%.',
-      b5: 'Streamlined site-visit tracking for solarcenter.mu by delivering an end-to-end audit scheduling web application, optimizing panel placement workflows for field engineering teams.',
-      b6: 'Optimized data synchronization across solarpool.mu and mbs457.mu by linking modular UI components with RESTful backend APIs, cutting page load latency by 15%.',
+      b1: 'Engineered commercial solar leasing platforms featuring a 20-year energy indexation simulator and ROI calculator, reducing customer quote turnaround time by 35%.',
+      b2: 'Spearheaded the development of B2B administrative portals to manage enterprise simulations, equipment inventory, and 500+ lease contracts across their full lifecycle.',
+      b3: 'Architected token-based JWT authentication and automated PDF report generation services adopted by 100+ international solar installers to export feasibility reports.',
+      b4: 'Developed a supplier management dashboard and asynchronous notification service using Node.js and FastAPI, accelerating new supplier onboarding by 20%.',
+      b5: 'Led the end-to-end delivery of a field audit scheduling application, enabling engineering teams to coordinate site inspections and optimize solar panel placement.',
+      b6: 'Optimized frontend rendering and REST API calls across two high-traffic web portals by refactoring reusable React components, reducing page load time by 15%.',
     },
   },
   about: {

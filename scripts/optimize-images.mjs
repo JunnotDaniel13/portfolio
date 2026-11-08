@@ -5,6 +5,7 @@ import sharp from 'sharp'
 const root = process.cwd()
 const output = path.join(root, 'public', 'images')
 await mkdir(output, { recursive: true })
+// [source file, output name]. The fallback <img> keeps the source's own format (jpg/png); WebP is served first.
 const projects = [
   ['pulse.png', 'pulse'],
   ['crefin.jpg', 'financial'],
@@ -13,13 +14,17 @@ const projects = [
   ['ayla.jpg', 'newsroom'],
 ]
 
+const encoders = {
+  webp: (image, quality) => image.clone().webp({ quality }).toBuffer(),
+  jpg: (image, quality) => image.clone().jpeg({ quality, mozjpeg: true }).toBuffer(),
+  png: (image, quality) => image.clone().png({ palette: true, quality, effort: 8 }).toBuffer(),
+}
+
 async function writeCapped(image, target, format, cap) {
-  let quality = format === 'avif' ? 48 : 76
+  let quality = format === 'webp' ? 76 : 82
   let buffer
   while (quality >= 24) {
-    buffer = format === 'avif'
-      ? await image.clone().avif({ quality, effort: 4 }).toBuffer()
-      : await image.clone().webp({ quality }).toBuffer()
+    buffer = await encoders[format](image, quality)
     if (buffer.byteLength <= cap) break
     quality -= 4
   }
@@ -28,24 +33,27 @@ async function writeCapped(image, target, format, cap) {
   return buffer.byteLength
 }
 
+const written = []
+async function emit(image, name, ext, webpCap, fallbackCap) {
+  for (const [format, cap] of [['webp', webpCap], [ext, fallbackCap]]) {
+    const target = path.join(output, `${name}.${format}`)
+    const size = await writeCapped(image, target, format, cap)
+    written.push(target)
+    console.log(`${path.basename(target)}: ${size} bytes`)
+  }
+}
+
 for (const [source, name] of projects) {
+  const ext = path.extname(source).slice(1)
   for (const width of [192, 480, 960]) {
     const height = Math.round(width * 10 / 16)
     const image = sharp(path.join(root, 'assets-src', 'projects', source)).resize(width, height, { fit: 'cover', position: 'top' })
-    for (const format of ['avif', 'webp']) {
-      const target = path.join(output, `${name}-${width}.${format}`)
-      const size = await writeCapped(image, target, format, format === 'avif' ? 40 * 1024 : 60 * 1024)
-      console.log(`${path.basename(target)}: ${size} bytes`)
-    }
+    await emit(image, `${name}-${width}`, ext, 60 * 1024, 120 * 1024)
   }
 }
 
 const profile = sharp(path.join(root, 'assets-src', 'profile.png')).resize(220, 220, { fit: 'cover' })
-for (const format of ['avif', 'webp']) {
-  const target = path.join(output, `profile.${format}`)
-  const size = await writeCapped(profile, target, format, 30 * 1024)
-  console.log(`${path.basename(target)}: ${size} bytes`)
-}
+await emit(profile, 'profile', 'png', 30 * 1024, 60 * 1024)
 
-const files = await Promise.all(projects.flatMap(([, name]) => [192, 480, 960].flatMap((width) => ['avif', 'webp'].map(async (format) => stat(path.join(output, `${name}-${width}.${format}`))))))
+const files = await Promise.all(written.map((file) => stat(file)))
 if (files.some((file) => file.size === 0)) throw new Error('An optimized image is empty')

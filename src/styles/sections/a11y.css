@@ -1,0 +1,127 @@
+@media (forced-colors:active) {
+  body {
+    background: Canvas;
+    color: CanvasText
+  }
+
+  .numeral {
+    display: none
+  }
+
+  .btn,
+  .btn-i,
+  .lang,
+  .seg,
+  input,
+  textarea,
+  .chips li,
+  .statusbox {
+    border-color: CanvasText
+  }
+
+  .btn.primary {
+    background: ButtonFace;
+    color: ButtonText
+  }
+
+  .proj .thumb {
+    filter: none !important;
+    border-color: CanvasText
+  }
+
+  summary::after {
+    border-color: CanvasText
+  }
+
+  :focus-visible {
+    outline-color: Highlight
+  }
+
+  .menu a[aria-current]::before,
+  .rail li a[aria-current]::before {
+    background: Highlight
+  }
+}
+
+@media print {
+  :root {
+    --bg: #fff;
+    --text: #000;
+    --muted: #222;
+    --subtle: #222;
+    --rule: #999;
+    --bar-h: 0
+  }
+
+  body {
+    display: block;
+    background: #fff;
+    color: #000;
+    font-size: 11pt
+  }
+
+  .rail,
+  .bar,
+  .menu,
+  .no-js-nav,
+  .skip,
+  .actions,
+  .theme-control,
+  .numeral,
+  details,
+  form,
+  .soc {
+    display: none !important
+  }
+
+  .main {
+    max-width: none;
+    padding: 0
+  }
+
+  .hero {
+    padding-bottom: 1rem
+  }
+
+  section {
+    break-inside: avoid;
+    margin-top: 1.5rem;
+    padding-top: 1rem
+  }
+
+  .proj,
+  .about,
+  .contact {
+    display: block
+  }
+
+  .proj>picture {
+    display: none
+  }
+
+  .work {
+    gap: 1rem
+  }
+
+  .print-only {
+    display: block
+  }
+
+  .chips li {
+    border: 1px solid #999
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    overflow-wrap: anywhere
+  }
+
+  a[href^="mailto:"]::after {
+    content: "";
+  }
+
+  footer {
+    margin-top: 2rem
+  }
+}
