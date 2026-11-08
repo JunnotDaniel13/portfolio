@@ -9,10 +9,6 @@ await mkdir(output, { recursive: true })
 // [source file, output name]. The fallback <img> keeps the source's own format (jpg/png); WebP is served first.
 const projects = [
   ['pulse.png', 'pulse'],
-  ['crefin.jpg', 'financial'],
-  ['travel.jpg', 'travel'],
-  ['real-estate.jpg', 'real-estate'],
-  ['ayla.jpg', 'newsroom'],
 ]
 
 const encoders = {

@@ -37,7 +37,7 @@ describe('localized portfolio data', () => {
       if (!('demo' in project)) continue
       expect(project.demo, project.id).toMatch(/^https:\/\/[^\s]+$/)
     }
-    expect(projects[0].id).toBe('pulse') // latest work first
+    expect(projects.map((project) => project.id)).toEqual(['pulse'])
   })
 
   it('has a demo-link label and a source-free Pulse entry in both locales', () => {

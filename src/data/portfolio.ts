@@ -32,30 +32,6 @@ export const projects = [
     // Only projects with a public URL get a link. The source repository is private, so there is no source link.
     demo: 'https://pulse-dashboard-theta-swart.vercel.app/',
   },
-  {
-    id: 'financial',
-    image: 'financial',
-    imageExt: 'jpg', // format of the original; used as the <img> fallback behind WebP
-    tools: ['Hono.js', 'TypeScript', 'OpenAI API', 'MongoDB', 'Docker', 'VPS'],
-  },
-  {
-    id: 'travel',
-    image: 'travel',
-    imageExt: 'jpg', // format of the original; used as the <img> fallback behind WebP
-    tools: ['Next.js', 'Tailwind CSS', 'NestJS', 'MySQL', 'AWS S3'],
-  },
-  {
-    id: 'real-estate',
-    image: 'real-estate',
-    imageExt: 'jpg', // format of the original; used as the <img> fallback behind WebP
-    tools: ['React', 'Express', 'TypeScript', 'MongoDB', 'Stripe'],
-  },
-  {
-    id: 'newsroom',
-    image: 'newsroom',
-    imageExt: 'jpg', // format of the original; used as the <img> fallback behind WebP
-    tools: ['Next.js', 'Material UI', 'Redux', 'Sun Editor'],
-  },
 ] as const
 
 export const experiences = [

@@ -37,7 +37,7 @@ export const messages: Messages = {
   },
   sections: {
     work: 'Projets sélectionnés',
-    workMeta: '5 projets',
+    workMeta: '1 projet',
     experience: 'Expérience',
     experienceMeta: '1 poste',
     about: 'À propos',
@@ -59,34 +59,6 @@ export const messages: Messages = {
     },
     details: 'Détails',
     demo: 'Démo en ligne',
-    financial: {
-      name: 'Application financière dopée à l’IA',
-      role: 'Back-end',
-      summary: 'API REST d’une application mobile financière dopée à l’IA, construite avec Hono.js, TypeScript et MongoDB, avec des modèles OpenAI pour classer les transactions et suggérer des budgets.',
-      description: 'API back-end REST à haut débit construite avec Hono.js et TypeScript, intégrant des modèles OpenAI pour automatiser la classification des transactions et des conseils budgétaires personnalisés. Conteneurisée avec Docker sur un VPS Linux autogéré derrière un proxy inverse Nginx, avec des requêtes MongoDB optimisées pour des temps de réponse inférieurs à 150 ms.',
-      alt: 'Illustration de deux personnes analysant des graphiques pour l’application financière IA',
-    },
-    travel: {
-      name: 'Application d’agence de voyage',
-      role: 'Full-stack',
-      summary: 'Application web full-stack multilingue pour une agence de voyage en Arménie (Next.js, NestJS, MySQL, AWS).',
-      description: 'Interface avec Next.js, TypeScript, MUI, Tailwind, Google Maps ; plusieurs langues et devises ; API avec NestJS, MySQL, TypeORM, AWS et Nodemailer ; front sur AWS Amplify, back sur EC2.',
-      alt: 'Illustration de préparation de voyage pour l’application multilingue de l’agence',
-    },
-    'real-estate': {
-      name: 'Immobilier dopé à l’IA',
-      role: 'Full-stack',
-      summary: 'Plateforme immobilière dopée à l’IA avec authentification par rôles, abonnements et paiements Stripe.',
-      description: 'API avec Express, TypeScript, OpenAI, Replicate, Stripe et Mongoose ; interface avec Next.js, Formik et Tailwind. Authentification par rôles, abonnements, tâches planifiées et paiements Stripe.',
-      alt: 'Illustration d’un logement et d’outils immobiliers pour la plateforme IA',
-    },
-    newsroom: {
-      name: 'Gestion de rédaction',
-      role: 'Full-stack',
-      summary: 'Tableau de bord de gestion de rédaction construit avec Next.js, Material UI et Redux.',
-      description: 'Front-end d’un tableau de bord de gestion de journal : Next.js, Material UI, Redux pour l’état, React Hook Form et Sun Editor pour les formulaires.',
-      alt: 'Illustration d’un tableau de bord éditorial pour le projet de gestion de rédaction',
-    },
   },
   experience: {
     stack: 'Stack :',

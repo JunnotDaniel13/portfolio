@@ -177,6 +177,7 @@ test('menu icon reflects the open state and status regions keep fixed roles', as
 test('Pulse is the first project, with a real live-demo link and no empty links', async ({ page }) => {
   for (const [path, label] of [['/', 'Live demo'], ['/fr', 'Démo en ligne']] as const) {
     await page.goto(path)
+    await expect(page.locator('#work article')).toHaveCount(1)
     const first = page.locator('#work article').first()
     await expect(first.getByRole('heading', { name: 'Pulse' })).toBeVisible()
     const link = first.getByRole('link', { name: new RegExp(label) })

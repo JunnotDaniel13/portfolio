@@ -35,7 +35,7 @@ export const messages = {
   },
   sections: {
     work: 'Selected work',
-    workMeta: '5 projects',
+    workMeta: '1 project',
     experience: 'Experience',
     experienceMeta: '1 role',
     about: 'About',
@@ -57,34 +57,6 @@ export const messages = {
     },
     details: 'Details',
     demo: 'Live demo',
-    financial: {
-      name: 'AI Powered Financial App',
-      role: 'Backend',
-      summary: 'REST API for an AI-powered financial mobile app, built with Hono.js, TypeScript and MongoDB, with OpenAI models for transaction classification and budget insights.',
-      description: 'High-throughput RESTful backend API built with Hono.js and TypeScript, integrating OpenAI models to automate transaction classification and personalized budget insights. Containerized with Docker on a self-managed Linux VPS behind an Nginx reverse proxy, with optimized MongoDB queries for sub-150ms response times.',
-      alt: 'Illustration of two people discussing financial charts for the AI financial app',
-    },
-    travel: {
-      name: 'Travel Agency App',
-      role: 'Full-stack',
-      summary: 'Multilingual full-stack web app for a travel agency in Armenia (Next.js, NestJS, MySQL, AWS).',
-      description: 'UI with Next.js, TypeScript, MUI, Tailwind, Google Maps; multiple languages and currencies; API with NestJS, MySQL, TypeORM, AWS and Nodemailer; front end on AWS Amplify, back end on EC2.',
-      alt: 'Illustration representing travel planning for the multilingual travel agency app',
-    },
-    'real-estate': {
-      name: 'AI Powered Real Estate',
-      role: 'Full-stack',
-      summary: 'AI-based real estate platform with role-based auth, subscription plans and Stripe payments.',
-      description: 'API with Express, TypeScript, OpenAI, Replicate, Stripe and Mongoose; UI with Next.js, Formik and Tailwind. Role-based auth, subscription plans, cron jobs and Stripe payments.',
-      alt: 'Illustration of a home and property tools for the AI real estate platform',
-    },
-    newsroom: {
-      name: 'Newsroom Management',
-      role: 'Full-stack',
-      summary: 'Newspaper management dashboard built with Next.js, Material UI and Redux.',
-      description: 'Front-end of a newspaper management dashboard: Next.js, Material UI, Redux for state, React Hook Form and Sun Editor for forms.',
-      alt: 'Illustration of an editorial dashboard for the newsroom management project',
-    },
   },
   experience: {
     stack: 'Stack:',
