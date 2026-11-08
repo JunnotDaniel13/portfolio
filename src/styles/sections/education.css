@@ -1,0 +1,19 @@
+ol.edu .course {
+  margin: .4rem 0 0;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: .95rem
+}
+
+ol.edu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem
+}
+
+ol.edu li {
+  border-top: 1px solid var(--rule);
+  padding-top: .75rem
+}

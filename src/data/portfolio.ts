@@ -54,7 +54,7 @@ export const projects = [
 ] as const
 
 export const experiences = [
-  { id: 'solar', company: 'FINAMAD', bullets: 6 },
+  { id: 'solar', company: 'FINAMAD', bullets: 6, stack: ['TypeScript', 'React', 'Next.js', 'Node.js', 'Laravel', 'FastAPI', 'PostgreSQL', 'MySQL', 'Docker'] },
 ] as const
 
 export const skillGroups = [

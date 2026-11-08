@@ -1,0 +1,35 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: transparent;
+  font-family: var(--sans)
+}
+
+.btn:hover {
+  color: var(--text);
+  background: var(--surface)
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent)
+}
+
+.btn.primary:hover {
+  background: var(--accent-hover);
+  color: var(--on-accent)
+}
+
+.btn[aria-disabled=true] {
+  cursor: progress
+}

@@ -55,7 +55,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" aria-labelledby="h-experience">
       <SectionHeader id="experience" number="02" titleKey="sections.experience" metaKey="sections.experienceMeta" />
-      <dl className="exp">{experiences.map(({ id, company, bullets }) => (
+      <dl className="exp">{experiences.map(({ id, company, bullets, stack }) => (
         <div key={id}>
           <dt>{t(`experience.${id}.title`)} · {company}</dt>
           <dd className="mono">{t(`experience.${id}.period`)}</dd>
@@ -64,6 +64,7 @@ export function ExperienceSection() {
               <li key={index}>{t(`experience.${id}.b${index + 1}` as MessageKey)}</li>
             ))}</ul>
           </dd>
+          <dd className="stack"><strong>{t('experience.stack')}</strong> {stack.join(', ')}</dd>
         </div>
       ))}</dl>
     </section>
